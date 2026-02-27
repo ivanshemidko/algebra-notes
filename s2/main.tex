@@ -1,0 +1,115 @@
+\documentclass[10pt,a4paper]{article}
+
+% --- Кодировка и язык ---
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1,T2A]{fontenc}
+\else
+  \usepackage{fontspec}
+  \setmainfont{CMU Serif}
+\fi
+\usepackage[english,russian]{babel}
+
+% --- Математика ---
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{amsthm}
+
+% --- Блоки с цветом ---
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems,breakable,skins}
+
+% --- Настройки страницы ---
+\usepackage{geometry}
+\geometry{left=22mm,right=22mm,top=25mm,bottom=27mm,heightrounded}
+
+% --- Цвета для блоков ---
+\usepackage{xcolor}
+\definecolor{cbBlueBack}{RGB}{246,249,252}
+\definecolor{cbGreenBack}{RGB}{246,251,248}
+\definecolor{cbOrangeBack}{RGB}{252,249,242}
+\definecolor{cbPurpleBack}{RGB}{249,247,252}
+\definecolor{cbGrayBack}{RGB}{249,249,249}
+\definecolor{cbRoseBack}{RGB}{252,248,249}
+\definecolor{cbBlue}{RGB}{42,87,132}
+\definecolor{cbGreen}{RGB}{52,110,72}
+\definecolor{cbOrange}{RGB}{140,98,0}
+\definecolor{cbPurple}{RGB}{93,78,140}
+\definecolor{cbGray}{RGB}{80,80,80}
+\definecolor{cbRose}{RGB}{138,65,82}
+
+% --- Теоремы и определения ---
+\newtheoremstyle{mystatement}{8pt}{8pt}{\itshape}{}{\bfseries}{.}{\newline}{}
+\newtheoremstyle{mydefinition}{8pt}{8pt}{\normalfont}{}{\bfseries}{.}{0.5em}{}
+\newtheoremstyle{myremark}{6pt}{6pt}{\normalfont}{}{\bfseries}{.}{\newline}{}
+
+\theoremstyle{mystatement}
+\newtheorem*{theorem}{Теорема}
+\newtheorem*{lemma}{Лемма}
+\newtheorem*{stmt}{Утверждение}
+
+\theoremstyle{mydefinition}
+\newtheorem*{definition}{Определение}
+\newtheorem*{example}{Пример}
+
+\theoremstyle{myremark}
+\newtheorem*{remark}{Замечание}
+
+% --- Цветные блоки tcolorbox ---
+\tcbset{
+  enhanced, sharp corners, boxrule=0.5pt,
+  left=9pt,right=9pt,top=7pt,bottom=7pt,
+  before skip=8pt, after skip=8pt, breakable
+}
+
+\tcolorboxenvironment{theorem}{colback=cbBlueBack, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbBlue}}
+\tcolorboxenvironment{lemma}{colback=cbPurpleBack, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbPurple}}
+\tcolorboxenvironment{definition}{colback=cbGreenBack, colframe=cbGreen!55!cbGray, borderline west={1.6pt}{0pt}{cbGreen}}
+\tcolorboxenvironment{example}{colback=cbOrangeBack, colframe=cbOrange!45!cbGray, borderline west={1.6pt}{0pt}{cbOrange}}
+\tcolorboxenvironment{remark}{colback=cbGrayBack, colframe=cbGray!40, borderline west={1.6pt}{0pt}{cbGray}}
+\tcolorboxenvironment{stmt}{colback=cbRoseBack, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbRose}}
+
+% --- Гиперссылки ---
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=cbBlue,
+  citecolor=cbBlue,
+  urlcolor=cbBlue
+}
+
+% --- Параметры документа ---
+\linespread{1.0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+
+
+\newcommand{\themefile}[1]{\input{themes/#1}}
+
+% ----------------------
+\begin{document}
+\thispagestyle{empty}
+
+
+\begin{center}
+  {\LARGE \textbf{Конспект по алгебре}}
+\end{center}
+
+\vspace{12pt}
+
+\tableofcontents
+\newpage
+
+\themefile{theme1.tex}
+
+
+\end{document}
