@@ -3,6 +3,9 @@ name: Compile all main.tex
 on:
   push:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
