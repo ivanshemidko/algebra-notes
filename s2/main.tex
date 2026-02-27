@@ -22,6 +22,7 @@
 % --- Настройки страницы ---
 \usepackage{geometry}
 \geometry{left=22mm,right=22mm,top=25mm,bottom=27mm,heightrounded}
+\usepackage{enumitem}
 
 % --- Цвета для блоков ---
 \usepackage{xcolor}
@@ -68,6 +69,15 @@
 \tcolorboxenvironment{example}{colback=cbOrangeBack, colframe=cbOrange!45!cbGray, borderline west={1.6pt}{0pt}{cbOrange}}
 \tcolorboxenvironment{remark}{colback=cbGrayBack, colframe=cbGray!40, borderline west={1.6pt}{0pt}{cbGray}}
 \tcolorboxenvironment{stmt}{colback=cbRoseBack, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbRose}}
+
+\newenvironment{examplelist}[1][]{%
+  \begin{example}#1%
+  \par\noindent
+  \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt, topsep=2pt]%
+}{%
+  \end{enumerate}%
+  \end{example}%
+}
 
 % --- Гиперссылки ---
 \usepackage{hyperref}
