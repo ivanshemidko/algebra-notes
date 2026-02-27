@@ -1,0 +1,33 @@
+name: Compile all main.tex
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install TeX Live
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended latexmk
+
+    - name: Find all main.tex and compile
+      run: |
+        find . -name "main.tex" | while read texfile; do
+          dir=$(dirname "$texfile")
+          echo "Compiling $texfile ..."
+          pdflatex -interaction=nonstopmode -output-directory "$dir" "$texfile"
+        done
+
+    - name: Commit PDFs
+      run: |
+        git config --local user.name "github-actions[bot]"
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git add $(find . -name "main.pdf")
+        git diff --cached --quiet || git commit -m "Update PDFs for main.tex files"
+        git push || echo "Nothing to push"
