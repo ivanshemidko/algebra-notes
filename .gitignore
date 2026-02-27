@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# LaTeX temp files (without pdf)
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# build folders
+**/out/
