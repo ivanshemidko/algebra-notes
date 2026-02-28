@@ -1,5 +1,32 @@
 \section{Евклидовы пространства}
 
-\begin{example}
-Testing \ldots
-\end{example}
+\begin{definition}
+    Евклидово пространство --- это веткорное пространство $V$ над $\mathbb{R}$
+    вместе с билинейным отображением $\langle\cdot,\cdot\rangle \colon V \times V  \to \mathbb{R}$,
+    такое что 
+    \[
+    \begin{aligned}
+        &\forall v \in V, \ v \ne 0 \quad \langle v,v\rangle > 0, \\
+        &\forall v, w \in V \quad \langle v, w\rangle = \langle w, v\rangle.
+    \end{aligned}
+    \]
+\end{definition}
+
+\begin{examplelist}
+        \item $V = \mathbb{R}^n$
+            \[
+            \langle
+            \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix},
+            \begin{pmatrix} w_1 \\ w_2 \\ \vdots \\ w_n \end{pmatrix}
+            \rangle
+            := \sum_{i=1}^{n} v_i w_i
+            \]
+        \item $V = C([0,1])$
+            \[
+            \langle f, g\rangle := \int_0^1 f(x)\, g(x)\, dx
+            \]
+            Пусть $f \neq 0$, тогда
+            \[
+            \langle f, f\rangle = \int_0^1 f(x)^2\, dx > 0
+            \]
+\end{examplelist}
