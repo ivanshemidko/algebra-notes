@@ -30,3 +30,128 @@
             \langle f, f\rangle = \int_0^1 f(x)^2\, dx > 0
             \]
 \end{examplelist}
+
+
+\begin{definition}
+    Ортогональность:
+    $v, w \in V \qquad v \perp w$, если $\langle v,w\rangle = 0$
+\end{definition}
+
+\begin{definition}
+    Норма вектора:
+    $v \in V \qquad \lVert v \rVert \coloneqq \sqrt{\langle v, v \rangle}$
+\end{definition}
+
+\begin{definition}
+    Нормирование вектора:
+    $v \neq 0 \qquad \hat{v} := \frac{v}{\|v\|}$
+
+    \[
+        \left\lVert \frac{v}{\|v\|} \right\rVert
+        = \|v\| \cdot
+        \frac{1}{\|v\|} = 1
+    \]
+\end{definition}
+
+
+\begin{definition}
+    Базис $e_1, e_2, \dots , e_n$ евклидова пространства $V$ называется \emph{ортогональным}, если $(e_i, e_j) = 0$ при $i \neq j.\\$
+    Такой базис называется \emph{ортонормированным}, если дополнительно $\|e_i\| = 1 \ \ \forall i = 1, \dots ,n.$
+\end{definition}
+
+\begin{example}
+    Стардартный базис в $\mathbb{R}^n$:
+    \[
+    \|\mathbf{e}_i\| = \sqrt{0^2 + \cdots + 0^2 + 1^2 + 0^2 + \cdots + 0^2} = 1.
+    \]
+\end{example}
+
+\begin{stmt}
+    Ортогональное преобразование не меняет ортогональности
+
+  \begin{center}
+    \begin{tikzpicture}
+      % твой tikz-код
+      \draw[->, thick] (0,0) -- (1.2,0) node[right] {$\mathbf{e}_1$};
+      \draw[->, thick] (0,0) -- (0,1.2) node[above] {$\mathbf{e}_2$};
+      \draw[->, thick, dashed, blue] (0,0) -- (0.85,0.85) node[above right] {$T\mathbf{e}_1$};
+      \draw[->, thick, dashed, blue] (0,0) -- (-0.85,0.85) node[above left]  {$T\mathbf{e}_2$};
+    \end{tikzpicture} 
+  \end{center}
+\end{stmt}
+
+
+\begin{example}
+    
+$L^2([0,\pi])$
+
+Скалярное произведение:
+\[
+\langle f,g\rangle = \int_0^\pi fg\,dx
+\]
+
+Система функций $\bigl\{\cos nx,\ \sin mx\bigr\}_{\substack{n \geq 0 \\ m \geq 1}}$
+--- разложение по базису -- ряд Фурье
+
+
+$\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi d\sin^2 x =
+\frac{1}{2} \sin^2 x \Big|_0^\pi = 0 $
+\par
+ 
+\emph{(lection version, idk)}
+
+% $\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi \sin 2x \, dx = 
+% -\frac{1}{4} \cos 2x \Big|_0^\pi = -\frac{1}{4} (1 - 1) = 0$
+\end{example}
+
+
+\begin{stmt}
+    Ортогональный набор $e_1, \dots, e_n$, где $e_i \neq 0$, линейно независим.
+    \begin{proof}
+        Пусть $\exists\, \lambda_1, \dots, \lambda_n \in \mathbb{R} : \sum_{i=1}^{n} \lambda_i e_i = 0$
+        \begin{align*}
+            \forall j = 1,\dots,n \quad
+            0 &= \Bigl\langle \sum_{i=1}^{n}\lambda_i e_i,\, e_j\Bigr\rangle
+               = \sum_{i=1}^{n} \lambda_i \langle e_i, e_j\rangle \\[4pt]
+              &= \lambda_j \underbrace{\langle e_j, e_j\rangle}_{>\,0}
+               \implies \lambda_j = 0
+        \end{align*}
+    \end{proof}
+\end{stmt}
+
+
+\begin{definition}
+    Ортогональная проекция вектора $v$ на вектор $w$:
+    \begin{align*}
+        \text{Ищем } \alpha \in \mathbb{R} \text{ такое, что } (v - \alpha w) \perp &w, \text{ т.е.}\\[4pt]
+        0 = \langle v - \alpha w,\, w \rangle
+           = \langle v, w \rangle - \alpha\langle w, w \rangle
+          \implies &\alpha = \frac{\langle v, w \rangle}{\langle w, w \rangle}
+    \end{align*}
+    \begin{center}
+
+        \begin{tikzpicture}[>=stealth, thick]
+            % Оси / вектор w
+            \draw[->] (0,0) -- (4.5,0) node[right] {$w$};
+
+            % Вектор v
+            \draw[->, blue] (0,0) -- (2.5, 2.5) node[above right] {$v$};
+
+            % Проекция alpha*w
+            \draw[->, red] (0,0) -- (2.5, 0) node[below] {$\alpha w$};
+
+            % Перпендикуляр
+            \draw[dashed, gray] (2.5, 2.5) -- (2.5, 0);
+
+            % Обозначение v - alpha*w
+            \draw[->, purple] (2.5, 0) -- (2.5, 2.5)
+                node[midway, right=4pt] {$v - \alpha w$};
+
+            % Значок прямого угла
+            \draw (2.5, 0.22) -- (2.72, 0.22) -- (2.72, 0);
+
+            % Точка начала координат
+            \filldraw (0,0) circle (1.5pt) node[below left] {$0$};
+        \end{tikzpicture}
+    \end{center}
+\end{definition}
