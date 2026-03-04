@@ -108,13 +108,13 @@ $\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi d\sin^2 x =
 \begin{stmt}
     Ортогональный набор $e_1, \dots, e_n$, где $e_i \neq 0$, линейно независим.
     \begin{proof}
-        Пусть $\exists\, \lambda_1, \dots, \lambda_n \in \mathbb{R} : \sum_{i=1}^{n} \lambda_i e_i = 0$
+        Пусть $\exists\, \mathbf{\lambda}_1, \dots, \mathbf{\lambda}_n \in \mathbb{R} : \sum_{i=1}^{n} \mathbf{\lambda}_i e_i = 0$
         \begin{align*}
             \forall j = 1,\dots,n \quad
-            0 &= \Bigl\langle \sum_{i=1}^{n}\lambda_i e_i,\, e_j\Bigr\rangle
-               = \sum_{i=1}^{n} \lambda_i \langle e_i, e_j\rangle \\[4pt]
-              &= \lambda_j \underbrace{\langle e_j, e_j\rangle}_{>\,0}
-               \implies \lambda_j = 0
+            0 &= \Bigl\langle \sum_{i=1}^{n}\mathbf{\lambda}_i e_i,\, e_j\Bigr\rangle
+               = \sum_{i=1}^{n} \mathbf{\lambda}_i \langle e_i, e_j\rangle \\[4pt]
+              &= \mathbf{\lambda}_j \underbrace{\langle e_j, e_j\rangle}_{>\,0}
+               \implies \mathbf{\lambda}_j = 0
         \end{align*}
     \end{proof}
 \end{stmt}
@@ -155,3 +155,117 @@ $\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi d\sin^2 x =
         \end{tikzpicture}
     \end{center}
 \end{definition}
+
+
+\newpage
+
+\begin{theorem}[об ортогонализации Грама-Шмидта]
+    Пусть $v_1, \dots, v_m$ --- набор векторов в $V$. Тогда $\exists$ ортонормированный базис $e_1, \dots, e_k$
+    линейной оболочки $\langle v_1,\dots, v_m\rangle$, такой что $\forall\, n \le k$ векторы $v_1, \dots, v_n \in \langle e_1, \dots, e_n\rangle$.
+    \begin{proof}
+        НУО $v_i \neq 0\ \forall\, i$. Индукция по $n$.\\[4pt]
+        \textbf{База:} $n = 1$: $\quad e_1 \coloneqq \dfrac{v_1}{\|v_1\|}$\\[6pt]
+        \textbf{Переход} $n \to n+1$:
+        \[
+            w_{n+1} \coloneqq v_{n+1} - \sum_{i=1}^{n} \langle v_{n+1}, e_i \rangle \cdot e_i
+        \]
+        Проверим ортогональность: $\forall\, j = 1,\dots,n$
+        \[
+            \langle w_{n+1}, e_j \rangle = \langle v_{n+1}, e_j \rangle - \langle v_{n+1}, e_j \rangle = 0
+        \]
+        \begin{center}
+        \begin{tabular}{c|c}
+            $w_{n+1} = 0$ & $w_{n+1} \neq 0$ \\[4pt]
+            \hline\\[-6pt]
+            $v_{n+1} \in \langle e_1, \dots, e_n \rangle$ & $w_{n+1} \perp e_1, \dots, e_n$ \\[6pt]
+            & $e_{n+1} \coloneqq \dfrac{w_{n+1}}{\|w_{n+1}\|}$ \\[8pt]
+        \end{tabular}
+        \end{center}
+    \end{proof}
+\end{theorem}
+
+
+\begin{stmt}
+    Пусть $e_1, \dots, e_n$ --- ортогональный базис $V$. Тогда
+    \[
+        \forall\, v \in V \implies \exists\, \mathbf{\lambda}_1, \dots, \mathbf{\lambda}_n : \quad v = \sum_{i=1}^{n} \mathbf{\lambda}_i e_i
+    \]
+    \[
+        \langle v, e_k \rangle = \sum_{i=1}^{n} \mathbf{\lambda}_i \langle e_i, e_k \rangle = \mathbf{\lambda}_k \langle e_k, e_k \rangle
+        \implies
+        \boxed{\mathbf{\lambda}_k = \frac{\langle v, e_k \rangle}{\|e_k\|^2}}
+    \]
+    Если $e_1, \dots, e_n$ ортонормированы, то $\boxed{\mathbf{\lambda}_k = \langle v, e_k \rangle}$.
+\end{stmt}
+
+
+\begin{definition}
+    Угол между векторами $v, w \in V$:
+    \[
+        \cos \angle(v, w) \coloneqq \frac{\langle v, w \rangle}{\|v\| \cdot \|w\|}
+    \]
+\end{definition}
+
+
+\begin{definition}[Матрица Грама]
+    Пусть $(v_1, \dots, v_n)$ и $(w_1, \dots, w_m)$ --- два набора векторов в $V$.
+    Обозначим $\mathbf{v} = (v_1, \dots, v_n)$, $\mathbf{w} = (w_1, \dots, w_m)$. Тогда:
+    \[
+        \mathbf{v}^T \cdot \mathbf{w} =
+        \begin{pmatrix}
+            \langle v_1, w_1 \rangle & \langle v_1, w_2 \rangle & \cdots \\
+            \langle v_2, w_1 \rangle & \ddots & \\
+            \vdots & &
+        \end{pmatrix}
+        =: G_{\mathbf{v}, \mathbf{w}} \in \mathrm{Mat}_{n \times m}(\mathbb{R})
+    \]
+    Если $\mathbf{v} = \mathbf{w}$, то $G_{\mathbf{v}, \mathbf{v}} =: G_{\mathbf{v}} \in \mathrm{Mat}_{n \times n}(\mathbb{R})$.
+\end{definition}
+
+\newpage
+
+\begin{stmt}
+    Если наборы векторов $\mathbf{v}$ и $\mathbf{w}$ линейно выражаются через наборы
+    $\mathbf{e} = (e_1, \dots, e_r)$ и $\mathbf{f} = (f_1, \dots, f_s)$
+    по формулам $\mathbf{v} = \mathbf{e}\, C_{\mathbf{e}\mathbf{v}}$ и $\mathbf{w} = \mathbf{f}\, C_{\mathbf{f}\mathbf{w}}$,
+    где $C_{\mathbf{e}\mathbf{v}} \in \mathrm{Mat}_{r \times n}(\mathbb{R})$ и $C_{\mathbf{f}\mathbf{w}} \in \mathrm{Mat}_{s \times m}(\mathbb{R})$, то:
+    \[
+        G_{\mathbf{v}\mathbf{w}}
+        = \mathbf{v}^T \mathbf{w}
+        = (\mathbf{e}\, C_{\mathbf{e}\mathbf{v}})^T\, \mathbf{f}\, C_{\mathbf{f}\mathbf{w}}
+        = C_{\mathbf{e}\mathbf{v}}^T\, \mathbf{e}^T \mathbf{f}\, C_{\mathbf{f}\mathbf{w}}
+        = C_{\mathbf{e}\mathbf{v}}^T\, G_{\mathbf{e}\mathbf{f}}\, C_{\mathbf{f}\mathbf{w}}
+    \]
+\end{stmt}
+
+
+\begin{definition} [Определитель Грама]
+    \[
+    \Gamma_{\mathbf{v}} \coloneqq \det G_{\mathbf{v}}
+    \]
+\end{definition}
+
+\begin{theorem}
+    Для любого набора векторов $\mathbf{w} = (w_1, \dots, w_m)$:
+    \begin{enumerate}
+        \item $\Gamma_{\mathbf{w}} \ge 0$
+        \item $\Gamma_{\mathbf{w}} = 0 \iff \mathbf{w}$ линейно зависим
+    \end{enumerate}
+    \begin{proof}
+        Пусть $\exists$ ненулевой столбец $\mathbf{x} = (x_1, \dots, x_m)^T \in \mathbb{R}^m$ такой, что
+        \[
+            \mathbf{w}\mathbf{x} = x_1 w_1 + \dots + x_m w_m = 0
+        \]
+        Умножая справа на $\mathbf{w}^T$, получаем $G_{\mathbf{w}}\mathbf{x} = 0$.
+        Это означает, что столбцы матрицы $G_{\mathbf{w}}$ линейно зависимы, поэтому
+        \[
+            \Gamma_{\mathbf{w}} = \det G_{\mathbf{w}} = 0
+        \]
+        Если $w_1, \dots, w_m$ линейно независимы, то по т. Грама-Шмидта в их линейной оболочке $\exists$ ортонормированный базис $\mathbf{e} = (e_1, \dots, e_m)$. Тогда:
+        \[
+            G_{\mathbf{w}} = C_{\mathbf{e}\mathbf{w}}^T\, G_{\mathbf{e}}\, C_{\mathbf{e}\mathbf{w}} = C_{\mathbf{e}\mathbf{w}}^T C_{\mathbf{e}\mathbf{w}}
+            \implies \Gamma_{\mathbf{w}} = (\det C_{\mathbf{e}\mathbf{w}})^2 > 0
+        \]
+        так как матрица перехода $C_{\mathbf{e}\mathbf{w}}$ обратима.
+    \end{proof}
+\end{theorem}
