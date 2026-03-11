@@ -257,7 +257,7 @@ $\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi d\sin^2 x =
             \mathbf{w}\mathbf{x} = x_1 w_1 + \dots + x_m w_m = 0
         \]
         Умножая справа на $\mathbf{w}^T$, получаем $G_{\mathbf{w}}\mathbf{x} = 0$.
-        Это означает, что столбцы матрицы $G_{\mathbf{w}}$ линейно зависимы, поэтому
+        Это означает, что строки (столбцы) матрицы $G_{\mathbf{w}}$ линейно зависимы, поэтому
         \[
             \Gamma_{\mathbf{w}} = \det G_{\mathbf{w}} = 0
         \]
@@ -268,4 +268,67 @@ $\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi d\sin^2 x =
         \]
         так как матрица перехода $C_{\mathbf{e}\mathbf{w}}$ обратима.
     \end{proof}
+\end{theorem}
+
+
+
+\begin{theorem}[Неравенство Коши–Буняковского–Шварца]
+    Для любых $v, w \in V$:
+    \[
+        |\langle v, w \rangle| \le \|v\| \cdot \|w\|
+    \]
+    \begin{proof}
+        Рассмотрим набор $\mathbf{v} = (v, w)$. По теореме об определителе Грама:
+        \[
+            \Gamma_{\mathbf{v}} = \det G_{\mathbf{v}}
+            = \det \begin{pmatrix} \langle v,v\rangle & \langle v,w\rangle \\ \langle w,v\rangle & \langle w,w\rangle \end{pmatrix}
+            = \langle v,v\rangle\langle w,w\rangle - \langle v,w\rangle^2 \ge 0
+        \]
+        Следовательно, $\langle v,w\rangle^2 \le \|v\|^2 \cdot \|w\|^2$, откуда $|\langle v,w\rangle| \le \|v\|\cdot\|w\|$.
+    \end{proof}
+\end{theorem}
+
+\begin{examplelist}
+    \item
+    В $\mathbb{R}^n$ при $v = (x_1,\dots,x_n)^T$, $w = (y_1,\dots,y_n)^T$:
+    \[
+        \bigl(x_1^2 + \cdots + x_n^2\bigr)\bigl(y_1^2 + \cdots + y_n^2\bigr)
+        \ge \bigl(x_1 y_1 + \cdots + x_n y_n\bigr)^2,
+        \quad \forall\, x_i, y_i \in \mathbb{R}
+    \]
+
+    \item
+    В $V = C([0,1])$ со скалярным произведением $\langle f,g\rangle = \int_0^1 fg\,dx$
+    неравенство КБШ принимает вид:
+    \[
+        \int_0^1 f^2\,dx \cdot \int_0^1 g^2\,dx \ge \left(\int_0^1 fg\,dx\right)^2
+    \]
+\end{examplelist}
+
+\begin{theorem}[Неравенство Гёльдера]
+    Пусть $f, g \in C([0,1])$ и $p, q > 1$, $\dfrac{1}{p} + \dfrac{1}{q} = 1$. Тогда:
+    \[
+        \left(\int_0^1 f^p\,dx\right)^{1/p} \cdot \left(\int_0^1 g^q\,dx\right)^{1/q}
+        \ge \left|\int_0^1 fg\,dx\right|
+    \]
+    где норма задаётся как $\|f\| = \left(\int_0^1 f^p\,dx\right)^{1/p}$.
+\end{theorem}
+
+
+\begin{remark}
+    Неравенство Гёльдера надо честно доказывать, но частный случай (пример 2) мы доказать можем.
+\end{remark}
+
+
+\begin{theorem}[Неравенство Гёльдера]
+    Пусть $f, g \in C([0,1])$ и $p, q > 1$, $\dfrac{1}{p} + \dfrac{1}{q} = 1$. Тогда:
+    \[
+        \left(\int_0^1 f^p\,dx\right)^{1/p} \cdot \left(\int_0^1 g^q\,dx\right)^{1/q}
+        \ge \left|\int_0^1 fg\,dx\right|
+    \]
+    \begin{remark}
+        При $p = q = 2$ это в точности неравенство КБШ, и тогда
+        $\left(\int_0^1 f^2\,dx\right)^{1/2} = \|f\|$ --- норма из скалярного произведения на $C([0,1])$.
+        При произвольном $p \neq 2$ надо доказывать честно.
+    \end{remark}
 \end{theorem}
