@@ -93,6 +93,11 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{4pt}
 
+\usepackage{titlesec}
+\counterwithin{section}{part}
+\renewcommand{\thepart}{\arabic{part}}
+\usepackage{tocloft}
+\setlength{\cftsecnumwidth}{2em}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -119,8 +124,14 @@
 \tableofcontents
 \newpage
 
+\part{Евклидовы пространства}
 \themefile{theme1.tex}
 \themefile{theme2.tex}
 
+
+% % exmpl
+% \part{New nice big theme}
+% \themefile{NICE_THEME_X.tex}
+% \themefile{NICE_THEME_Y.tex}
 
 \end{document}
