@@ -32,14 +32,14 @@
 \definecolor{cbPurpleBack}{RGB}{249,247,252}
 \definecolor{cbGrayBack}{RGB}{249,249,249}
 \definecolor{cbRoseBack}{RGB}{252,248,249}
-\definecolor{cbPinkBack}{RGB}{253, 231, 253}
+\definecolor{cbPinkBack}{RGB}{248, 240, 250}
 \definecolor{cbBlue}{RGB}{42,87,132}
 \definecolor{cbGreen}{RGB}{52,110,72}
 \definecolor{cbOrange}{RGB}{140,98,0}
 \definecolor{cbPurple}{RGB}{93,78,140}
 \definecolor{cbGray}{RGB}{80,80,80}
 \definecolor{cbRose}{RGB}{138,65,82}
-\definecolor{cbPink}{RGB}{242, 97, 227}
+\definecolor{cbPink}{RGB}{160, 100, 170}
 
 % --- Theorems and definitions ---
 \newtheoremstyle{mystatement}{8pt}{8pt}{\itshape}{}{\bfseries}{.}{\newline}{}
@@ -54,7 +54,9 @@
 \theoremstyle{mydefinition}
 \newtheorem*{definition}{Определение}
 \newtheorem*{example}{Пример}
-\newtheorem{prop}{Свойства}
+\newtheorem*{prop}{Свойство}
+\newtheorem*{props}{Свойства}
+\newtheorem*{examples}{Примеры}
 
 \theoremstyle{myremark}
 \newtheorem*{remark}{Замечание}
@@ -73,23 +75,25 @@
 \tcolorboxenvironment{remark}{colback=cbGrayBack, colframe=cbGray!40, borderline west={1.6pt}{0pt}{cbGray}}
 \tcolorboxenvironment{stmt}{colback=cbRoseBack, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbRose}}
 \tcolorboxenvironment{prop}{colback=cbPinkBack!50, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbPink}}
+\tcolorboxenvironment{props}{colback=cbPinkBack!50, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbPink}}
+\tcolorboxenvironment{examples}{colback=cbOrangeBack, colframe=cbOrange!45!cbGray, borderline west={1.6pt}{0pt}{cbOrange}}
 
 \newenvironment{examplelist}[1][]{
-  \begin{example}#1
+  \begin{examples}#1
   \par\noindent
   \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt, topsep=2pt]
 }{
   \end{enumerate}
-  \end{example}
+  \end{examples}
 }
 
 \newenvironment{proplist}[1][]{
-	\begin{prop}
+	\begin{props}
 	\par\noindent
 	\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt, topsep=2pt]
 }{
 	\end{enumerate}
-	\end{prop}
+	\end{props}
 }
 
 % --- Hyperlinks ---
@@ -169,7 +173,6 @@
 
 
 % % exmpl
-% \newpage
 % \part{New nice big theme}
 % \themefile{NICE_THEME_X.tex}
 % \themefile{NICE_THEME_Y.tex}
