@@ -69,16 +69,25 @@
   before skip=8pt, after skip=8pt, breakable
 }
 
-\tcolorboxenvironment{theorem}{colback=cbBlueBack, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbBlue}}
-\tcolorboxenvironment{lemma}{colback=cbPurpleBack, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbPurple}}
-\tcolorboxenvironment{cor}{colback=cbPurpleBack, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbPurple}}
-\tcolorboxenvironment{definition}{colback=cbGreenBack, colframe=cbGreen!55!cbGray, borderline west={1.6pt}{0pt}{cbGreen}}
-\tcolorboxenvironment{example}{colback=cbOrangeBack, colframe=cbOrange!45!cbGray, borderline west={1.6pt}{0pt}{cbOrange}}
-\tcolorboxenvironment{remark}{colback=cbGrayBack, colframe=cbGray!40, borderline west={1.6pt}{0pt}{cbGray}}
-\tcolorboxenvironment{stmt}{colback=cbRoseBack, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbRose}}
-\tcolorboxenvironment{prop}{colback=cbPinkBack!50, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbPink}}
-\tcolorboxenvironment{props}{colback=cbPinkBack!50, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbPink}}
-\tcolorboxenvironment{examples}{colback=cbOrangeBack, colframe=cbOrange!45!cbGray, borderline west={1.6pt}{0pt}{cbOrange}}
+\newif\ifcolorblocks
+\input{config.tex}
+
+\ifcolorblocks
+  \newcommand{\blockback}[1]{#1}
+\else
+  \newcommand{\blockback}[1]{white}
+\fi
+
+\tcolorboxenvironment{theorem}{colback=\blockback{cbBlueBack}, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbBlue}}
+\tcolorboxenvironment{lemma}{colback=\blockback{cbPurpleBack}, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbPurple}}
+\tcolorboxenvironment{cor}{colback=\blockback{cbPurpleBack}, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbPurple}}
+\tcolorboxenvironment{definition}{colback=\blockback{cbGreenBack}, colframe=cbGreen!55!cbGray, borderline west={1.6pt}{0pt}{cbGreen}}
+\tcolorboxenvironment{example}{colback=\blockback{cbOrangeBack}, colframe=cbOrange!45!cbGray, borderline west={1.6pt}{0pt}{cbOrange}}
+\tcolorboxenvironment{remark}{colback=\blockback{cbGrayBack}, colframe=cbGray!40, borderline west={1.6pt}{0pt}{cbGray}}
+\tcolorboxenvironment{stmt}{colback=\blockback{cbRoseBack}, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbRose}}
+\tcolorboxenvironment{prop}{colback=\blockback{cbPinkBack!50}, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbPink}}
+\tcolorboxenvironment{props}{colback=\blockback{cbPinkBack!50}, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbPink}}
+\tcolorboxenvironment{examples}{colback=\blockback{cbOrangeBack}, colframe=cbOrange!45!cbGray, borderline west={1.6pt}{0pt}{cbOrange}}
 
 \newenvironment{examplelist}[1][]{
   \begin{examples}#1
