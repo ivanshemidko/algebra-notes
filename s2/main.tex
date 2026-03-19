@@ -114,6 +114,9 @@
 
 \newcommand{\themefile}[1]{\input{themes/#1}}
 
+\usepackage{etoolbox}
+\pretocmd{\part}{\newpage}{}{}
+
 % ----------------------
 \begin{document}
 \thispagestyle{empty}
@@ -127,7 +130,6 @@
 
 \tableofcontents
 
-\newpage
 \part{Евклидовы пространства}
 \themefile{scalar_product.tex}
 \themefile{volume.tex}
@@ -135,23 +137,19 @@
 \themefile{orthogonal_complements.tex}
 
 
-\newpage
 \part{Пространства с билинейной формой}
 \themefile{bilinear_form.tex}
 % ...
 
 
-\newpage
 \part{Симметричные и кососимметричные формы}
 % ...
 
 
-\newpage
 \part{Квадратичные формы}
 % ... 
 
 
-\newpage
 \part{Теория групп}
 \themefile{group.tex}
 % ... | by fyddan
