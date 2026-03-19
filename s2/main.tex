@@ -70,13 +70,13 @@
 \tcolorboxenvironment{remark}{colback=cbGrayBack, colframe=cbGray!40, borderline west={1.6pt}{0pt}{cbGray}}
 \tcolorboxenvironment{stmt}{colback=cbRoseBack, colframe=cbGray!55, borderline west={1.6pt}{0pt}{cbRose}}
 
-\newenvironment{examplelist}[1][]{%
-  \begin{example}#1%
+\newenvironment{examplelist}[1][]{
+  \begin{example}#1
   \par\noindent
-  \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt, topsep=2pt]%
-}{%
-  \end{enumerate}%
-  \end{example}%
+  \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt, topsep=2pt]
+}{
+  \end{enumerate}
+  \end{example}
 }
 
 % --- Hyperlinks ---
@@ -94,6 +94,8 @@
 \setlength{\parskip}{4pt}
 
 \usepackage{titlesec}
+\titleformat{\part}[block]{\Large\bfseries\centering}{}{0pt}{}
+\titlespacing*{\part}{0pt}{0pt}{12pt}
 \counterwithin{section}{part}
 \renewcommand{\thepart}{\arabic{part}}
 \usepackage{tocloft}
@@ -105,8 +107,10 @@
 \fancyhf{}
 \fancyhead[L]{\nouppercase{\leftmark}}
 \fancyfoot[C]{\thepage}
-\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\let\oldpart\part
 
+\renewcommand{\part}[1]{\oldpart{#1}\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{}
 
 \newcommand{\themefile}[1]{\input{themes/#1}}
 
@@ -122,14 +126,15 @@
 \vspace{12pt}
 
 \tableofcontents
-\newpage
 
+\newpage
 \part{Евклидовы пространства}
 \themefile{scalar_product.tex}
 \themefile{volume.tex}
 
 
 % % exmpl
+% \newpage
 % \part{New nice big theme}
 % \themefile{NICE_THEME_X.tex}
 % \themefile{NICE_THEME_Y.tex}
