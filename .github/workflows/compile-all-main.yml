@@ -36,9 +36,6 @@ jobs:
           root_file: '**/main.tex'
           work_in_root_file_dir: true
 
-      - name: Rename PDF
-        run: mv main/main.pdf main/${{ matrix.filename }}.pdf
-
       - name: Commit and push PDF if changed
         run: |
           git config --local user.name "github-actions[bot]"
