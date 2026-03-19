@@ -73,7 +73,7 @@
         \\
 
         \textbf{\emph{1}} (полилинейность по первому аргументу, остальные аналогично): \\
-        Хотим $\omega(\alpha v + \beta г, \dots) = \alpha \omega(v, \dots) + \beta \omega(u, \dots)$
+        Хотим $\omega(\alpha v + \beta u, \dots) = \alpha \omega(v, \dots) + \beta \omega(u, \dots)$
         Для этого надо $\omega(v + u, \dots) = \omega(v, \dots) + \omega(u, v_2, \dots, v_n)$.
 
         \textbf{1.а)} Если $v, v_2, \dots, v_n$ и $u, v_2, \dots, v_n$ лин.\ зависимы,
@@ -147,6 +147,53 @@
     \]
 
     \begin{proof}
-        \emph{TODO} \\
+        $L \colon V \to V$, $e_i \mapsto v_i$.
+        \[
+            \omega(Le_1 \wedge \dots \wedge Le_n) 
+            = \omega((\bigwedge^n L)(e_1 \wedge \dots \wedge e_n))
+            = \underbrace{\det L}_{\det C_{ev}} \omega(e_1 \wedge \dots \wedge e_n).
+        \]
     \end{proof}
 \end{stmt}
+
+
+\begin{definition}[Евклидов объём]
+    Пусть $e_1, \dots, e_n$ --- ортонормированный базис $V$. Тогда
+    \[
+        \exists!\, \omega \colon \omega(e_1 \wedge \dots \wedge e_n) = 1.
+    \]
+    Если $f_1, \dots, f_n$ --- ортонормированный базис, то
+    \[
+        \omega(f_1 \wedge \dots \wedge f_n)
+        = \underbrace{\omega(e_1 \wedge \dots \wedge e_n)}_{=\,1}
+          \cdot
+          \underbrace{\det C_{ef}}_{=\,\pm 1}
+        = \pm 1.
+    \]
+    $\omega$ называется \emph{евклидовым объёмом}.
+    \begin{remark}
+        \textbf{Построение $\omega$.} Так как $\dim(\Lambda^n V)^* = 1$, возьмём
+        любую ненулевую форму $\tilde{\omega} \in (\Lambda^n V)^*$.
+        Положим $\alpha := \tilde{\omega}(e_1 \wedge \dots \wedge e_n) \neq 0$ и
+        \[
+            \omega := \frac{1}{\alpha}\,\tilde{\omega}.
+        \]
+        Тогда $\omega(e_1 \wedge \dots \wedge e_n) = 1$, и такая $\omega$ единственна:
+        если $(\widetilde{\omega} - \frac{1}{\alpha}\,\tilde{\omega})(e_1 \wedge \dots \wedge e_n) = 0$,
+        то $\widetilde\omega = \frac{1}{\alpha}\,\tilde{\omega}$.
+
+        \textbf{Знак $\pm 1$.} Матрица перехода $C_{ef}$ между двумя
+            ортонормированными базисами удовлетворяет $C^T C = I$, поэтому
+            \[
+                1 = \det(C^T C) = \det(C^T)\cdot\det(C) = \det(C)^2
+                \implies \det C = \pm 1.
+            \]
+            Здесь использовано, что $\det(C^T) = \det(C)$, так как
+            определитель по строкам и по столбцам совпадает.
+
+            Знак зависит от ориентации базисов: одинаковая ориентация даёт $+1$,
+            противоположная --- $-1$. После фиксации базиса ориентация не меняется,
+            и знак $\omega$ определён однозначно.
+    \end{remark}
+\end{definition}
+
