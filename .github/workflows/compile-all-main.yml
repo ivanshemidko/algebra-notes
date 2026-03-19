@@ -36,12 +36,14 @@ jobs:
         with:
           root_file: '**/main.tex'
           work_in_root_file_dir: true
+          pre_compile: tlmgr install cm-super
 
       - name: Commit and push PDF if changed
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -f **/${{ matrix.filename }}.pdf
-          git diff --cached --quiet || git commit -m "Update ${{ matrix.filename }}.pdf"
+          git diff --cached --quiet && exit 0
+          git commit -m "Update ${{ matrix.filename }}.pdf"
           git pull --rebase
           git push || echo "No changes to commit/push"
