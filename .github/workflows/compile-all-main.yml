@@ -14,8 +14,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     strategy:
       matrix:
         include:
@@ -36,7 +34,9 @@ jobs:
         with:
           root_file: '**/main.tex'
           work_in_root_file_dir: true
-          pre_compile: tlmgr install cm-super
+
+      - name: Rename PDF
+        run: mv s2/main.pdf s2/${{ matrix.filename }}.pdf
 
       - name: Commit and push PDF if changed
         run: |
