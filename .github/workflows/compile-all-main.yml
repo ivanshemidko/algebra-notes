@@ -1,4 +1,4 @@
-name: Compile main.tex and commit PDF
+name: Compile main.tex and commit PDFs
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
           fetch-depth: 0
 
       - name: Set colorblocks flag
-        run: echo '\colorblocks${{ matrix.colorblocks }}' > config.tex
+        run: echo '\colorblocks${{ matrix.colorblocks }}' > s2/config.tex
   
       - name: Compile LaTeX
         uses: xu-cheng/latex-action@v4
