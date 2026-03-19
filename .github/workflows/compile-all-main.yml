@@ -45,5 +45,6 @@ jobs:
           git add -f **/${{ matrix.filename }}.pdf
           git diff --cached --quiet && exit 0
           git commit -m "Update ${{ matrix.filename }}.pdf"
+          git restore s2/config.tex
           git pull --rebase
           git push || echo "No changes to commit/push"
