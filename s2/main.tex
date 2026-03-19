@@ -1,6 +1,6 @@
 \documentclass[10pt,a4paper]{article}
 
-% --- Кодировка и язык ---
+% --- Encoding and language ---
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[utf8]{inputenc}
@@ -11,20 +11,20 @@
 \fi
 \usepackage[english,russian]{babel}
 
-% --- Математика ---
+% --- Math ---
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{amsthm}
 
-% --- Блоки с цветом ---
+% --- Color blocks ---
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{theorems,breakable,skins}
 
-% --- Настройки страницы ---
+% --- Page settings ---
 \usepackage{geometry}
 \geometry{left=22mm,right=22mm,top=25mm,bottom=27mm,heightrounded}
 \usepackage{enumitem}
 
-% --- Цвета для блоков ---
+% --- Colors for blocks ---
 \usepackage{xcolor}
 \definecolor{cbBlueBack}{RGB}{246,249,252}
 \definecolor{cbGreenBack}{RGB}{246,251,248}
@@ -39,7 +39,7 @@
 \definecolor{cbGray}{RGB}{80,80,80}
 \definecolor{cbRose}{RGB}{138,65,82}
 
-% --- Теоремы и определения ---
+% --- Theorems and definitions ---
 \newtheoremstyle{mystatement}{8pt}{8pt}{\itshape}{}{\bfseries}{.}{\newline}{}
 \newtheoremstyle{mydefinition}{8pt}{8pt}{\normalfont}{}{\bfseries}{.}{0.5em}{}
 \newtheoremstyle{myremark}{6pt}{6pt}{\normalfont}{}{\bfseries}{.}{\newline}{}
@@ -56,7 +56,7 @@
 \theoremstyle{myremark}
 \newtheorem*{remark}{Замечание}
 
-% --- Цветные блоки tcolorbox ---
+% --- Colored tcolorbox blocks ---
 \tcbset{
   enhanced, sharp corners, boxrule=0.5pt,
   left=9pt,right=9pt,top=7pt,bottom=7pt,
@@ -79,7 +79,7 @@
   \end{example}%
 }
 
-% --- Гиперссылки ---
+% --- Hyperlinks ---
 \usepackage{hyperref}
 \hypersetup{
   colorlinks=true,
@@ -88,7 +88,7 @@
   urlcolor=cbBlue
 }
 
-% --- Параметры документа ---
+% --- Document parameters ---
 \linespread{1.0}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{4pt}
