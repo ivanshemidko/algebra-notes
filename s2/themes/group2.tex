@@ -1,0 +1,277 @@
+\section{Группы 2}
+
+\begin{definition}
+    \emph{Действие} группы $G$ на множестве $X$ --- это гомоморфизм $G \to \mathrm{Bij}(X)$, $g \mapsto \varphi_g$.
+
+    Иными словами, каждому $g \in G$ сопоставляется биекция $\varphi_g\colon X \to X$, причём $\varphi_{g \cdot h} = \varphi_g \circ \varphi_h$. \\
+    Обозначение: $G \curvearrowright X$.
+\end{definition}
+
+\begin{definition}
+    Действие называется \emph{транзитивным}, если $\forall\, x, y \in X\ \exists\, g \in G\colon \varphi_g(x) = y$.
+\end{definition}
+
+\begin{definition}
+    Действие называется \emph{свободным}, если $\forall\, g \in G,\, g \neq e\colon \varphi_g(x) \neq x\ \forall\, x \in X$ 
+    (Любой элемент группы $G$  без неподвижных точек).
+\end{definition}
+
+
+\begin{remark} 
+    Вместо $\varphi_g(x)$ обычно пишут $gx$.
+\end{remark}
+
+
+
+\begin{definition}
+    \emph{Орбита} элемента $x \in X$:
+    \[
+        \mathrm{Orb}\, x = \{gx \mid g \in G\} \subseteq X.
+    \]
+\end{definition}
+
+\begin{example}
+    Если $G$ действует на $X$ транзитивно, то $\mathrm{Orb}\, x = X$ для любого $x$.
+\end{example}
+
+\begin{stmt}
+    Если $y \in \mathrm{Orb}\, x$, то $\mathrm{Orb}\, y = \mathrm{Orb}\, x$.
+\end{stmt}
+
+\begin{definition}
+    Определим отношение на $X$: $x \sim y$, если $\exists\, z\colon x, y \in \mathrm{Orb}\, z$.
+\end{definition}
+
+\begin{stmt}
+    Отношение $\sim$ является отношением эквивалентности.
+    \begin{proof}
+        
+        \textbf{\\Рефлексивность.} $x \sim x$, так как $x \in \mathrm{Orb}\, x$.
+
+        \textbf{Симметричность.} Если $x \sim y$, то $\exists z \in X: x, y \in \mathrm{Orb}\ z \Rightarrow 
+        y, x \in \mathrm{Orb}\ z \Rightarrow y \sim x$.
+
+        \textbf{Транзитивность.} Пусть $x \sim y$ и $y \sim z$. Тогда:
+        \[
+            x \sim y \Rightarrow \exists\, t \in X\colon x, y \in \mathrm{Orb}\, t,
+        \]
+        \[
+            y \sim z \Rightarrow \exists\, s \in X\colon y, z \in \mathrm{Orb}\, s.
+        \]
+        Утверждаем, что $x, z \in \mathrm{Orb}\, y$. Действительно,
+        \[
+            x \in \mathrm{Orb}\, t \Leftrightarrow \exists\, g\colon gx = t,
+            \qquad
+            y \in \mathrm{Orb}\, t \Leftrightarrow \exists\, \tilde{g}\colon \tilde{g}y = t.
+        \]
+        Тогда $\tilde{g}^{-1} g x = \tilde{g}^{-1} t = y$, откуда $x \in \mathrm{Orb}\, y$.
+        Аналогично из $y, z \in \mathrm{Orb}\, s$ получаем $z \in \mathrm{Orb}\, y$.
+        Таким образом, $x, z \in \mathrm{Orb}\, y$, и по определению $x \sim z$.
+    \end{proof}
+\end{stmt}
+
+\begin{cor}
+    Орбиты либо не пересекаются, либо совпадают.
+\end{cor}
+
+
+
+\begin{definition}
+    \emph{Стабилизатор} элемента $x \in X$:
+    \[
+        \mathrm{Stab}\, x = \{g \in G \mid gx = x\} \subseteq G.
+    \]
+\end{definition}
+
+\begin{example}
+    Если $G$ действует на $X$ свободно, то $\mathrm{Stab}\, x = \{e\}$ для любого $x$.
+\end{example}
+
+\begin{definition}
+    Подмножество $H \subseteq G$ группы $(G, \cdot)$ называется \emph{подгруппой}, если $(H, \cdot)$ --- группа.
+\end{definition}
+
+\begin{stmt}
+    $H \subseteq G$ является подгруппой тогда и только тогда, когда:
+    \begin{enumerate}
+        \item $\forall\, h, h' \in H$: $h \cdot h' \in H$,
+        \item $\forall\, h \in H$: $h^{-1} \in H$.
+    \end{enumerate}
+\end{stmt}
+
+\begin{remark}
+    Для конечной группы достаточно проверить лишь замкнутость: если $H \subseteq G$ конечно и замкнуто,
+    то обратные элементы существуют автоматически. Действительно, для любого $g \in H$ последовательность $g, g^2, g^3, \ldots$ принимает
+    лишь конечно много значений, поэтому $g^i = g^j$ при некоторых $i < j$, откуда $g^{j-i} = e$ и $g^{-1} = g^{j-i-1} \in H$.
+\end{remark}
+
+\begin{stmt}
+    $\mathrm{Stab}\, x$ --- подгруппа $G$.
+    \begin{proof}
+        \textbf{Замкнутость.} Пусть $g, \tilde{g} \in \mathrm{Stab}\, x$. Тогда $(g\tilde{g})x
+         = \varphi_{g\tilde{g}}(x) = (\varphi_g \circ \varphi_{\tilde{g}})(x) 
+        = \varphi_g(\varphi_{\tilde{g}}(x)) = g(\tilde{g}x) = gx = x$.
+
+        \textbf{Обратный.} Пусть $g \in \mathrm{Stab}\, x$, тогда $gx = x$. Подействуем $g^{-1}$:
+        \[
+            g^{-1}(x) = g^{-1}(gx) = (g^{-1}g)x = ex = x.
+        \]
+        Значит $g^{-1} \in \mathrm{Stab}\, x$.
+    \end{proof}
+\end{stmt}
+
+
+\begin{stmt}
+    Пусть $G, X$ конечны. Тогда $\forall x \sim x' \in X $, то $|\mathrm{Stab}\, x| = |\mathrm{Stab}\, x'|$.
+    \begin{proof}
+        Построим отображение $f\colon \mathrm{Stab}\, x' \to \mathrm{Stab}\, x$.
+        Так как $x \sim x'$, то $\exists\, g\colon gx = x'$.
+        Пусть $\tilde{g} \in \mathrm{Stab}\, x$.
+        \[
+            f(\tilde{g}) \coloneqq g^{-1} \tilde{g}\, g.
+        \]
+        Проверим, что $f(\tilde{g}) \in \mathrm{Stab}\, x$:
+        \[
+            (g^{-1}\tilde{g}\, g) x = g^{-1}\tilde{g}(gx) = g^{-1}\tilde{g}\, x' = g^{-1} x' = x.
+        \]
+        Построим $h\colon \mathrm{Stab}\, x' \to \mathrm{Stab}\, x$.
+        \[
+            h(\tilde{\tilde{g}}) \coloneqq g^{-1} \tilde{\tilde{g}}\, g.
+        \]
+        Аналогично, $h(\tilde{\tilde{g}}) \in \mathrm{Stab}\, x$. \\
+        Покажем, что $f \circ h = \mathrm{id}_{\mathrm{Stab}\, x'}$ и $h \circ f = \mathrm{id}_{\mathrm{Stab}\, x}$:
+        \[
+            (h \circ f)(\tilde{g}) = h(g\tilde{g}\, g^{-1}) = g^{-1}(g\tilde{g}\, g^{-1})g = \tilde{g}.
+        \]
+        Аналогично, $(f \circ h)(\tilde{\tilde{g}}) = \tilde{\tilde{g}}$.
+        Таким образом, $f$ — биекция, откуда $|\mathrm{Stab}\, x| = |\mathrm{Stab}\, x'|$.    \end{proof}
+
+
+    \begin{remark}
+        Орбиты могут быть разных размером.
+    \end{remark}
+\end{stmt}
+
+
+\section{Формула орбит-стабилизаторов}
+
+\begin{stmt}
+    Пусть $G$ действует на $X$, $x \in X$. Тогда
+    \[
+        |G| = |\mathrm{Orb}\, x| \cdot |\mathrm{Stab}\, x|.
+    \]
+    \begin{proof}
+        Разобьём $G$ по элементам орбиты:
+        \[
+            |G| = \sum_{y \in \mathrm{Orb}\, x} |\{g \mid gx = y\}|.
+        \]
+        Покажем, что $|\{g \mid gx = y\}| = |\mathrm{Stab}\, x|$ для любого $y \in \mathrm{Orb}\, x$.
+
+        Зафиксируем $\tilde{g}\colon \tilde{g}x = y$. Построим биекцию $\mathrm{Stab}\, x \to \{g \mid gx = y\}$, $g \mapsto \tilde{g}\, g$.
+        Почему попали?
+
+        \[
+            (\tilde{g} g)(x) = \tilde{g}(gx) = \tilde{g}x = y
+        \]
+
+        \textbf{Инъективность.} $\tilde{g}\, g = \tilde{g}\, g' \implies g = g'$.
+
+        \textbf{Сюръективность.} Пусть $\hat{g} \in \{g | gx = y\}$.
+        Хотим найти $g \in \mathrm{Stab}\, x'\colon$ положим $g = \tilde{g}^{-1}\hat{g}$
+        (из $\hat{g} = \tilde{g}g$, т.е. $g = \tilde{g}^{-1}\hat{g}$).
+        Почему $g \in \mathrm{Stab}\, x'$?
+        \[
+            gx = \tilde{g}^{-1}\hat{g}\, x' = \tilde{g}^{-1} y = x. \qquad \square
+        \]
+
+        Итого:
+        \[
+            |G| = \sum_{y \in \mathrm{Orb}\, x} |\mathrm{Stab}\, x| = |\mathrm{Stab}\, x| \cdot |\mathrm{Orb}\, x|. \qedhere
+        \]
+    \end{proof}
+\end{stmt}
+
+
+\begin{remark}
+    Как упражнение можно построить обратные для доказательства биекции.
+\end{remark}
+
+
+
+\begin{definition}
+    Пусть $G$ действует на $X$, $g \in G$. Множество неподвижных точек:
+    \[
+        X^g = \{x \in X \mid gx = x\}.
+    \]
+\end{definition}
+
+\begin{definition}
+Обозначим $X / G$ --- множество орбит.
+\end{definition}
+
+\begin{theorem}[Формула Полиа-Бёрнсайда]
+    Пусть $G$ и $X$ конечны, $G$ действует на $X$. Тогда
+    \[
+        |X / G| = \frac{1}{|G|} \sum_{g \in G} |X^g|.
+    \]
+
+    \begin{proof}
+        Рассмотрим множество $S = \{(g, x) \in G \times X \mid gx = x\}$ и посчитаем $|S|$ двумя способами.
+
+        \textbf{По $g$:}
+        \[
+            |S| = \sum_{g \in G} |X^g|.
+        \]
+
+        \textbf{По $x$:}
+        \[
+            |S| = \sum_{x \in X} |\mathrm{Stab}\, x|.
+        \]
+        Группируем по орбитам. Для $x$ из одной орбиты $d$ размер стабилизатора одинаков, поэтому:
+        \[
+            \sum_{x \in X} |\mathrm{Stab}\, x| = \sum_{d \in X/G} \sum_{x \in d} |\mathrm{Stab}\, x| = \sum_{d \in X/G} |d| \cdot |\mathrm{Stab}\, x| = \sum_{d \in X/G} |G| = |G| \cdot |X/G|.
+        \]
+        Здесь использовано, что $|d| \cdot |\mathrm{Stab}\, x| = |\mathrm{Orb}\, x| \cdot |\mathrm{Stab}\, x| = |G|$.
+
+        Приравниваем: $\sum_{g \in G} |X^g| = |G| \cdot |X/G|$.
+    \end{proof}
+\end{theorem}
+
+
+
+\begin{example}
+    Имеем $n$ цветов. Сколько различных раскрасок вершин квадрата из $4$ бусин, если считаем одинаковыми те, которые переводятся друг в друга поворотом или отражением?
+
+    $D_4$ --- группа симметрий квадрата, $|D_4| = 8$:
+    \[
+        e,\, \tau,\, \tau^2,\, \tau^3,\, \varepsilon,\, \tau\varepsilon,\, \tau^2\varepsilon,\, \tau^3\varepsilon,
+    \]
+    где $\tau$ --- поворот на $\pi/2$, $\varepsilon$ --- отражение.
+
+    $X$ --- все раскраски $4$ вершин в $n$ цветов, $|X| = n^4$.
+
+    Подсчитаем $|X^g|$ для каждого $g \in D_4$:
+
+    \begin{center}
+    \begin{tabular}{l|l|l}
+        $g$ & описание & $|X^g|$ \\
+        \hline
+        $e$ & тождественное & $n^4$ \\
+        $\tau$ & поворот на $\pi/2$ & $n$ \\
+        $\tau^2$ & поворот на $\pi$ & $n^2$ \\
+        $\tau^3$ & поворот на $3\pi/2$ & $n$ \\
+        $\varepsilon$ & отражение (гориз.) & $n^3$ \\
+        $\tau\varepsilon$ & отражение (диаг.) & $n^2$ \\
+        $\tau^2\varepsilon$ & отражение (верт.) & $n^3$ \\
+        $\tau^3\varepsilon$ & отражение (диаг.) & $n^2$ \\
+    \end{tabular}
+    \end{center}
+
+    По формуле Бёрнсайда:
+    \[
+        |X / G| = \frac{1}{8}\bigl(n^4 + 2n^3 + 3n^2 + 2n\bigr).
+    \]
+
+
+    NOTE: might be will be expanded
+\end{example}
