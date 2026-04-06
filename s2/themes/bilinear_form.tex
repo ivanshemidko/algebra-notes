@@ -1,0 +1,65 @@
+\section{Билинейные формы}
+
+\begin{definition}
+    Пусть $V$ --- векторное пространство над полем $k, \operatorname{char}(k) \ne 2$. 
+    \emph{Билинейная форма} --- это билинейное отображение $B\colon V \times V \to k$.
+\end{definition}
+
+
+\begin{definition}
+    По билинейной форме $B$ определяются две \emph{корреляции}:
+
+    \emph{Правая корреляция:}
+    \[
+        B^{\wedge}\colon V \to V^*, \quad v \mapsto (u \mapsto B(u, v)).
+    \]
+
+    \emph{Левая корреляция:}
+    \[
+        {}^{\wedge}\!B\colon V \to V^*, \quad v \mapsto (u \mapsto B(v, u)).
+    \]
+    то есть $({}^{\wedge}\!Bv)(u) = B(v, u)$.
+
+    Обе корреляции --- линейные отображения.
+\end{definition}
+
+
+\begin{definition}
+    \emph{Правый ортогонал} (правое ядро):
+    \[
+        V^\perp = \ker B^{\wedge} = \{v \in V \mid B(u, v) = 0\ \forall u \in V\}.
+    \]
+    \emph{Левый ортогонал} (левое ядро):
+    \[
+        {}^\perp V = \ker {}^{\wedge}\!B = \{v \in V \mid B(v, u) = 0\ \forall u \in V\}.
+    \]
+\end{definition}
+
+
+\begin{remark}
+    Если $B$ симметрична или кососимметрична, то $V^\perp = {}^\perp V$, и можно говорить просто о ядре $\ker B$.
+\end{remark}
+
+
+\begin{definition}[Матрица Грама]
+    Пусть $\mathbf{v} = (v_1, \dots, v_n)$ и $\mathbf{u} = (u_1, \dots, u_m)$ --- два набора векторов в $V$. Тогда
+    \[
+        G_{\mathbf{v}, \mathbf{u}} = \bigl(B(v_i, u_j)\bigr) \in \mathrm{Mat}_{n \times m}(k).
+    \]
+\end{definition}
+
+\begin{definition}[Изометрия]
+    Пусть $(V, B)$ и $(W, \widetilde{B})$ --- пространства с билинейными формами. Линейное отображение $f\colon V \to W$ называется \emph{изометрией}, если
+    \[
+        B(v_1, v_2) = \widetilde{B}(f(v_1), f(v_2)) \quad \forall\, v_1, v_2 \in V.
+    \]
+    Такое отображение -- изометрический  изоморфизм, если является биекцией.
+\end{definition}
+
+
+\begin{stmt}
+    Если $f\colon V \to W$ --- биекция и изометрия, то $f^{-1}$ тоже изометрия.
+    \begin{proof}
+        $\widetilde{B}(w_1, w_2) = \widetilde{B}(f(f^{-1}(w_1)),\, f(f^{-1}(w_2))) = B(f^{-1}(w_1),\, f^{-1}(w_2))$.
+    \end{proof}
+\end{stmt}
