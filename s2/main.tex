@@ -107,8 +107,14 @@
 	\end{props}
 }
 
-\newlist{proofsteps}{enumerate}{1}
-\setlist[proofsteps]{label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt, topsep=2pt, before=\leavevmode}
+\newlist{proofstepsinner}{enumerate}{1}
+\setlist[proofstepsinner]{label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt, topsep=2pt, before=\leavevmode}
+
+\newenvironment{proofsteps}{
+  \begin{proofstepsinner}
+}{
+  \end{proofstepsinner}\hfill\qed
+}
 
 % --- Hyperlinks ---
 \usepackage{hyperref}
@@ -170,9 +176,7 @@
 
 \part{Пространства с билинейной формой}
 \themefile{bilinear_form.tex}
-% ...
-
-% \themefile{Nsymmetric_forms.tex}
+\themefile{symmetric_forms.tex}
 % \themefile{Nlagrange_darboux.tex}
 % ... 
 
