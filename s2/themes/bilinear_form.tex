@@ -22,7 +22,7 @@
     \[
         {}^{\wedge}\!B\colon V \to V^*, \quad v \mapsto (u \mapsto B(v, u)).
     \]
-    
+
     Обе корреляции --- линейные отображения.
 \end{definition}
 
@@ -48,6 +48,13 @@
     Пусть $\mathbf{v} = (v_1, \dots, v_n)$ и $\mathbf{u} = (u_1, \dots, u_m)$ --- два набора векторов в $V$. Тогда
     \[
         G_{\mathbf{v}, \mathbf{u}} = \bigl(B(v_i, u_j)\bigr) \in \mathrm{Mat}_{n \times m}(k).
+    \]
+    Таким образом
+    \[
+        B(x, y) = B\!\left(\sum_i x_i e_i,\ \sum_j y_j e_j\right)
+        = \sum_{i,j} x_i y_j B(e_i, e_j)
+        = \sum_{i,j} x_i G_{ij} y_j
+        = x^T G y.
     \]
 \end{definition}
 
