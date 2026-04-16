@@ -1,0 +1,553 @@
+\section{Фактор-группы}
+
+
+\subsection*{Классы смежности}
+
+\begin{definition}
+    \emph{Левое действие} подгруппы $H$ на $G$:
+    \[
+        H \to \mathrm{Bij}(G), \qquad h \mapsto \varphi_h,\quad \varphi_h(g) \coloneqq hg.
+    \]
+    Орбита элемента $g \in G$ при этом действии называется \emph{правым классом смежности}:
+    \[
+        \mathrm{Orb}\, g = \{hg \mid h \in H\} =: Hg.
+    \]
+    Множество всех правых классов смежности обозначается $H \backslash G$.
+\end{definition}
+
+\begin{remark}
+    Действие здесь левое (умножаем на $h$ слева), но класс называется \emph{правым}, так как элемент $g$ стоит \emph{справа}.
+\end{remark}
+
+\begin{definition}
+    \emph{Правое действие} подгруппы $H$ на $G$:
+    \[
+        H \to \mathrm{Bij}(G), \qquad h \mapsto \varphi_h,\quad \varphi_h(g) \coloneqq gh^{-1}.
+    \]
+    Орбита элемента $g$:
+    \[
+        \mathrm{Orb}\, g = \{gh^{-1} \mid h \in H\} = \{gh \mid h \in H\} =: gH
+    \]
+    называется \emph{левым классом смежности} элемента $g$.
+    Множество всех левых классов смежности обозначается $G / H$.
+\end{definition}
+
+\begin{remark}
+    Во втором случае необходимо писать именно $gh^{-1}$, а не $gh$. Если определить $\varphi_h(g) = gh$, то
+    \[
+        \varphi_{h_1 h_2}(g) = g h_1 h_2, \qquad (\varphi_{h_1} \circ \varphi_{h_2})(g) = \varphi_{h_1} (g h_2) = g h_2 h_1,
+    \]
+    и эти выражения не равны в общем случае. Обратные разворачивают порядок, и равенство восстанавливается:
+    \[
+        \varphi_{h_1 h_2}(g) = g(h_1 h_2)^{-1} = g h_2^{-1} h_1^{-1}
+        = \varphi_{h_1}(g h_2^{-1}) = (\varphi_{h_1} \circ \varphi_{h_2})(g).
+    \]
+\end{remark}
+
+\begin{remark}
+    Чтобы не путать действие с умножением в группе, будем обозначать действие точкой: $h . g$
+    (вместо формального $\varphi_h(g)$ или просто $hg$).
+\end{remark}
+
+% ----------------------------------------------------------------
+\subsection*{Отношения эквивалентности}
+
+\begin{stmt}
+    Пусть $H < G$. Определим на $G$ два отношения:
+    \[
+        g_1 \sim_L g_2 \iff g_1,\, g_2 \in Hg \text{ для некоторого } g \in G,
+    \]
+    \[
+        g_1 \sim_R g_2 \iff g_1,\, g_2 \in gH \text{ для некоторого } g \in G.
+    \]
+    Оба являются отношениями эквивалентности.
+
+    \begin{proof}
+        Докажем для $\sim_L$; для $\sim_R$ аналогично.
+
+        \textbf{Рефлексивность.} $g \in Hg$ (при $h = e$), поэтому $g \sim_L g$.
+
+        \textbf{Симметричность.} Если $g_1 \sim_L g_2$, то $g_1, g_2 \in Hg$, а значит и $g_2, g_1 \in Hg$, то есть $g_2 \sim_L g_1$.
+
+        \textbf{Транзитивность.} Пусть $g_1 \sim_L g_2$ и $g_2 \sim_L g_3$, то есть
+        \[
+            g_1,\, g_2 \in Hg, \qquad g_2,\, g_3 \in H\widetilde{g}
+        \]
+        для некоторых $g, \widetilde{g} \in G$. Покажем, что $g_1, g_2 \in Hg_2$.
+
+        Из $g_1 \in Hg$ следует $g_1 = h_1 g$, а из $g_2 \in Hg$ следует $g_2 = h_2 g$, откуда $g = h_2^{-1} g_2$. Подставляя:
+        \[
+            g_1 = h_1 g = h_1 h_2^{-1} g_2, \quad h_1 h_2^{-1} \in H,
+        \]
+        значит $g_1 \in Hg_2$. Очевидно, $g_2 \in Hg_2$.
+
+        Аналогично из $g_2, g_3 \in H\widetilde{g}$ получаем $g_2, g_3 \in Hg_2$.
+
+        Таким образом, $g_1, g_3 \in Hg_2$, откуда $g_1 \sim_L g_3$.
+    \end{proof}
+\end{stmt}
+
+% ----------------------------------------------------------------
+\subsection*{Свободность действий}
+
+\begin{stmt}
+    Пусть $H < G$. Оба действия $H$ на $G$ (левое и правое) свободны.
+
+    \begin{proof}
+        Рассмотрим левое действие. Если $h . g = hg = g$, то домножив справа на $g^{-1}$, получаем $h = e$.
+        Для правого действия: если $g \cdot h^{-1} = g$, то $h^{-1} = e$, откуда $h = e$.
+    \end{proof}
+\end{stmt}
+
+Итого, из структуры подгруппы $H < G$ автоматически получаем два свободных действия.
+
+% ----------------------------------------------------------------
+\subsection*{Теорема Лагранжа}
+
+\begin{stmt}
+    Все классы смежности имеют одинаковую мощность:
+    \[
+        |Hg| = |H| \quad \forall\, g \in G.
+    \]
+    \begin{proof}
+        По формуле орбит--стабилизаторов: $|\mathrm{Orb}\, g| \cdot |\mathrm{Stab}\, g| = |H|$.
+        Так как действие свободно, $|\mathrm{Stab}\, g| = 1$, откуда $|Hg| = |H|$.
+    \end{proof}
+\end{stmt}
+
+\begin{theorem}[Лагранжа]
+    Пусть $G$ --- конечная группа, $H < G$. Тогда $|H|$ делит $|G|$.
+
+    \begin{proof}
+        Группа $G$ разбивается в дизъюнктное объединение классов смежности:
+        \[
+            |G| = \sum_{\text{классы смежности}} |Hg| = |H| \cdot |G / H|.
+        \]
+        Значит, $|G| = |H| \cdot [G : H]$, и $|H| \mid |G|$.
+    \end{proof}
+\end{theorem}
+
+\begin{definition}
+    \emph{Индекс} подгруппы $H$ в группе $G$:
+    \[
+        [G : H] \coloneqq |G / H|
+    \]
+    --- количество левых (или правых) классов смежности.
+\end{definition}
+
+\begin{cor}
+    Пусть $G$ --- конечная группа, $g \in G$. Тогда $\mathrm{ord}(g) = min \{n \in \mathbb{N} | g^n = e\}$ делит $|G|$, или считается равной бесконечности.
+
+    \begin{proof}
+        Рассмотрим циклическую подгруппу $\langle g \rangle = \{e, g, g^2, \ldots\} < G$.
+        Её мощность равна $\mathrm{ord}(g)$, и по теореме Лагранжа $\mathrm{ord}(g) \mid |G|$.
+    \end{proof}
+\end{cor}
+
+
+\subsection*{Нормальные подгруппы}
+
+\begin{definition}
+    Подгруппа $H < G$ называется \emph{нормальной}, если
+    \[
+        gH = Hg \quad \forall\, g \in G.
+    \]
+    Обозначение: $H \trianglelefteq G$.
+
+    Эквивалентные условия (упражнение):
+    \[
+        H \trianglelefteq G \iff g^{-1}Hg = H \;\forall g \in G \iff g^{-1}Hg \subseteq H \;\forall g \in G.
+    \]
+    На практике удобно проверять именно последнее включение.
+\end{definition}
+
+\begin{stmt}
+    Пусть $f\colon G \to T$ --- гомоморфизм. Тогда $\ker f \trianglelefteq G$.
+
+    \begin{proof}
+        Возьмём произвольные $g \in G$, $h \in \ker f$. Проверим, что $g^{-1}hg \in \ker f$:
+        \[
+            f(g^{-1}hg) = f(g^{-1}) \cdot f(h) \cdot f(g) = f(g)^{-1} \cdot e \cdot f(g) = e. \qedhere
+        \]
+    \end{proof}
+\end{stmt}
+
+\begin{remark}
+    Верно и обратное: любая нормальная подгруппа является ядром некоторого гомоморфизма. Мы увидим это из следующей теоремы.
+\end{remark}
+
+
+
+\subsection*{Фактор-группа}
+
+Хотим определить операцию на $G/H$. Естественный кандидат:
+\[
+    (g_1 H) \cdot (g_2 H) \coloneqq (g_1 g_2) H. \tag{$*$}
+\]
+Проблема: представитель не единственен, нужна корректность.
+
+\begin{stmt}
+    Формула $(*)$ определяет структуру группы на $G/H$ тогда и только тогда, когда $H \trianglelefteq G$.
+
+    \begin{proof}
+        \textbf{($\Leftarrow$) Корректность.} Пусть $g_1, t_1 \in g_1 H = t_1 H$ и $g_2, t_2 \in g_2 H = t_2 H$. Покажем, что $t_1 t_2 H = g_1 g_2 H$.
+
+        \[
+        (g_1 H)\cdot(g_2 H) = (g_1 g_2)H
+        \]
+
+        \[
+        (t_1 t_2)H = t_1(t_2 H) = t_1(g_2 H) =
+        \]
+
+        \[
+        = t_1(H g_2) = (t_1 H) g_2 = (g_1 H) g_2 =
+        \]
+
+        \[
+        = (g_1 g_2)H
+        \]
+        Значит, $t_1 t_2 H = g_1 g_2 H$. Операция корректно определена.
+
+        \textbf{Аксиомы группы.}
+        \begin{itemize}
+            \item \emph{Ассоциативность} --- бесплатно из ассоциативности в $G$.
+            \item \emph{Нейтральный элемент} --- $eH$.
+            \item \emph{Обратный} --- $(gH)^{-1} = g^{-1}H$.
+        \end{itemize}
+
+        \textbf{($\Rightarrow$)} Рассмотрим отображение $\pi\colon G \to G/H$, $g \mapsto gH$. Если $(*)$ задаёт операцию группы, то $\pi$ --- гомоморфизм:
+        \[
+            \pi(g_1 g_2) = g_1 g_2 H = (g_1 H)(g_2 H) = \pi(g_1)\pi(g_2).
+        \]
+        Его ядро:
+        \[
+            \ker \pi = \{g \in G \mid gH = eH\} = \{g \in G \mid g \in H\} = H.
+        \]
+        Следовательно, $H = \ker \pi \trianglelefteq G$.
+    \end{proof}
+\end{stmt}
+
+\begin{definition}
+    Группа $G/H$ называется \emph{фактор-группой} $G$ по нормальной подгруппе $H \trianglelefteq G$.
+\end{definition}
+
+% ----------------------------------------------------------------
+\subsection*{Универсальное свойство фактор-группы}
+
+\begin{stmt}[Универсальное свойство фактор-группы]
+    Пусть $H \trianglelefteq G$, $T$ --- группа, $f\colon G \to T$ --- гомоморфизм такой, что $f(H) = \{e\}$.
+    Тогда существует единственный гомоморфизм $\bar{f}\colon G/H \to T$ такой, что $f = \bar{f} \circ \pi$:
+    \[
+        \begin{array}{ccc}
+            G & \xrightarrow{\ f\ } & T \\
+            \downarrow\, \pi & \nearrow\, \bar{f} & \\
+            G/H & &
+        \end{array}
+    \]
+
+    \begin{proof}
+        \textbf{Определение.} Положим $\bar{f}(gH) \coloneqq f(g)$.
+
+        \textbf{Корректность.} Если $g' \in gH$, то $g' = gh$ для некоторого $h \in H$, откуда
+        \[
+            f(g') = f(gh) = f(g) f(h) = f(g) \cdot e = f(g).
+        \]
+
+        \textbf{Гомоморфизм.} $\bar{f}((g_1 H)(g_2 H)) = \bar{f}(g_1 g_2 H) = f(g_1 g_2) = f(g_1) f(g_2) = \bar{f}(g_1 H)\bar{f}(g_2 H)$.
+
+        \textbf{Коммутативность.} $(\bar{f} \circ \pi)(g) = \bar{f}(gH) = f(g)$.
+
+        \textbf{Единственность.} Любой $\psi\colon G/H \to T$, решающий задачу, обязан удовлетворять $\psi(gH) = \psi(\pi(g)) = f(g)$. Значит, $\psi = \bar{f}$.
+    \end{proof}
+\end{stmt}
+
+% ----------------------------------------------------------------
+\subsection*{Коммутаторы и коммутант}
+
+\begin{definition}
+    \emph{Коммутатором} элементов $g, t \in G$ называется
+    \[
+        [g, t] \coloneqq g t g^{-1} t^{-1}.
+    \]
+\end{definition}
+
+\begin{stmt}
+    Группа $G$ абелева тогда и только тогда, когда $[g, t] = e$ для всех $g, t \in G$.
+
+    \begin{proof}
+        \textbf{($\Rightarrow$)} Если $G$ абелева, то $gtg^{-1}t^{-1} = gg^{-1}tt^{-1} = e$.
+
+        \textbf{($\Leftarrow$)} Если $[g, t] = gtg^{-1}t^{-1} = e$, то $gt = tg$ для любых $g, t \in G$.
+    \end{proof}
+\end{stmt}
+
+\begin{remark}
+    Коммутаторы не образуют подгруппу: произведение двух коммутаторов не обязано само быть коммутатором.
+\end{remark}
+
+\begin{definition}
+    \emph{Коммутант} группы $G$:
+    \[
+        [G, G] \coloneqq \langle [g, t] \mid g, t \in G \rangle
+    \]
+    --- наименьшая подгруппа, содержащая все коммутаторы. Элементы $[G, G]$ --- это конечные произведения коммутаторов.
+\end{definition}
+
+\begin{stmt}
+    $[G, G] \trianglelefteq G$.
+
+    \begin{proof}
+        Достаточно показать, что $g [t_1, t_2] g^{-1} \in [G, G]$ для любых $g, t_1, t_2 \in G$ (тогда сопряжение произвольного произведения коммутаторов разбивается на сопряжения каждого множителя).
+
+        Заметим, что:
+        \[
+            g [t_1, t_2] g^{-1} = [g, [t_1, t_2]] \cdot [t_1, t_2].
+        \]
+        Правая часть --- произведение двух элементов коммутанта, значит $g[t_1, t_2]g^{-1} \in [G,G]$.
+
+        Для произведения $[t_1, t_2][t_3, t_4] \cdots$:
+        \[
+            g \bigl([t_1,t_2][t_3,t_4]\cdots\bigr) g^{-1}
+            = (g[t_1,t_2]g^{-1})(g[t_3,t_4]g^{-1})\cdots \in [G, G]. \qedhere
+        \]
+    \end{proof}
+\end{stmt}
+
+\begin{definition}
+    \emph{Абелианизация} группы $G$ --- это фактор-группа
+    \[
+        G^{\mathrm{ab}} \coloneqq G / [G, G].
+    \]
+    Это наибольшая абелева группа, которую можно получить из $G$ факторизацией.
+\end{definition}
+
+% ----------------------------------------------------------------
+\subsection*{Универсальное свойство абелианизации}
+
+\begin{stmt}[Универсальное свойство абелианизации]
+    Пусть $G$ --- группа, $A$ --- абелева группа, $f\colon G \to A$ --- гомоморфизм.
+    Тогда существует единственный гомоморфизм $\bar{f}\colon G/[G,G] \to A$ такой, что $f = \bar{f} \circ \pi$:
+    \[
+        \begin{array}{ccc}
+            G & \xrightarrow{\ f\ } & A \\
+            \downarrow\, \pi & \nearrow\, \bar{f} & \\
+            G/[G,G] & &
+        \end{array}
+    \]
+
+    \begin{proof}
+        Это следствие универсального свойства фактор-группы. Достаточно проверить, что $f([G,G]) = \{e\}$.
+
+        Так как $A$ абелева, для любого коммутатора $[g_1, g_2] = g_1 g_2 g_1^{-1} g_2^{-1}$:
+        \[
+            f([g_1, g_2]) = f(g_1 g_2 g_1^{-1} g_2^{-1}) = f(g_1) f(g_2) f(g_1^{-1}) f(g_2^{-1}) = 
+        \]
+        \[
+            = f(g_1) f(g_1^{-1}) f(g_2) f(g_2^{-1}) = f(g_1 g_1^{-1} g_2^{-1}) = f(e) = e.
+        \]
+
+        Значит, все коммутаторы отображаются в $e$, а значит и весь $[G,G]$. 
+        По универсальному свойству фактор-группы такой $\bar{f}$ существует и единственен.
+    \end{proof}
+\end{stmt}
+
+
+\section{Симметрические группы}
+ 
+\subsection*{Знак перестановки}
+ 
+\begin{definition}
+    $S_n = \mathrm{Bij}(\{1, \ldots, n\}).$
+    Пусть $\sigma \in S_n$. \emph{Число инверсий} перестановки $\sigma$:
+    \[
+        \mathrm{inv}(\sigma) \coloneqq \bigl|\{(i,j) \mid i < j,\ \sigma(i) > \sigma(j)\}\bigr|.
+    \]
+    \emph{Знак} перестановки:
+    \[
+        \mathrm{sgn}(\sigma) \coloneqq (-1)^{\mathrm{inv}{\sigma}} \in \{1, -1\}.
+    \]
+    Перестановка называется \emph{чётной}, если $\mathrm{sgn}(\sigma) = 1$, и \emph{нечётной} --- иначе.
+\end{definition}
+
+\begin{definition}
+    Транспозиция --- перестановка, которая меняет местами два элемента.
+\end{definition}
+ 
+\begin{example}
+    Рассмотрим транспозицию $\sigma = (24) \in S_5$ (меняет $2$ и $4$ местами, остальные на месте):
+    \[
+        \sigma\colon 1 \mapsto 1,\quad 2 \mapsto 4,\quad 3 \mapsto 3,\quad 4 \mapsto 2,\quad 5 \mapsto 5.
+    \]
+    Инверсии возникают в парах $(i,j)$, $i < j$, где порядок нарушается. Перебирая:
+    \begin{center}
+    \begin{tabular}{c|c|c}
+        $(i,j)$ & было & стало \\
+        \hline
+        $(2,3)$ & $2 < 3$ & $4 > 3$ --- инверсия \\
+        $(2,4)$ & $2 < 4$ & $4 > 2$ --- инверсия \\
+        $(3,4)$ & $3 < 4$ & $3 > 2$ --- инверсия \\
+    \end{tabular}
+    \end{center}
+    Итого $\mathrm{inv}(\sigma) = 3$, поэтому $\mathrm{sgn}(\sigma) = (-1)^3 = -1$.
+\end{example}
+ 
+\begin{stmt}
+    У любой транспозиции $\tau \in S_n$ знак равен $-1$.
+\end{stmt}
+ 
+\begin{stmt}
+    Знак перестановки мультипликативен:
+    \[
+        \mathrm{sgn}(\sigma_1 \sigma_2) = \mathrm{sgn}(\sigma_1)\cdot\mathrm{sgn}(\sigma_2).
+    \]
+    Иными словами, $\mathrm{sgn}\colon S_n \to \{1,-1\}$ --- гомоморфизм групп.
+ 
+    Отсюда немедленно следует таблица:
+    \[
+        \text{чётн} \cdot \text{чётн} = \text{чётн}, \qquad
+        \text{нечётн} \cdot \text{нечётн} = \text{чётн}, \qquad
+        \text{чётн} \cdot \text{нечётн} = \text{нечётн}.
+    \]
+\end{stmt}
+ 
+\begin{stmt}
+    У цикла длины $m$ знак равен $(-1)^{m-1}$.
+\end{stmt}
+ 
+\begin{example}
+    Рассмотрим $\sigma = (234) \in S_5$ (цикл $2\to3\to4\to2$, элементы $1,5$ неподвижны):
+    \[
+        \sigma\colon 1\mapsto 1,\quad 2\mapsto 3,\quad 3\mapsto 4,\quad 4\mapsto 2,\quad 5\mapsto 5.
+    \]
+ 
+    \textbf{Способ 1: подсчёт инверсий.}
+    Инверсии среди пар $(i,j)$, $i < j$: $(2,4)$ и $(3,4)$. Итого $\mathrm{inv}(\sigma) = 2$, $\mathrm{sgn}(\sigma) = 1$.
+ 
+    \textbf{Способ 2: разложение в транспозиции.}
+    $\sigma = (34)(24)$, два множителя:
+    \[
+        \mathrm{sgn}(\sigma) = \mathrm{sgn}((34) \cdot (24)) = \mathrm{sgn}(34)\cdot\mathrm{sgn}(24) = (-1)^2 = 1.
+    \]
+ 
+    \textbf{Способ 3: формула для цикла.}
+    Цикл длины $3$: $\mathrm{sgn} = (-1)^{3-1} = 1$.
+\end{example}
+ 
+
+ 
+\begin{definition}
+    $A_n \coloneqq \ker(\mathrm{sgn}) \subset S_n$ --- подгруппа чётных перестановок.
+\end{definition}
+ 
+\begin{stmt}
+    $A_n \trianglelefteq S_n$, $[S_n : A_n] = 2$, $|A_n| = n!/2$ (при $n \geq 2$).
+    \begin{proof}
+        Нормальность: $A_n = \ker(\mathrm{sgn})$ --- ядро гомоморфизма.
+ 
+        Индекс: по следствию из теоремы о гомоморфизмах $|\mathrm{Im}(\mathrm{sgn})| = |S_n|/|A_n|$.
+        При $n \geq 2$ образ равен $\{1,-1\}$ (транспозиция существует), значит $|S_n|/|A_n| = 2$.
+    \end{proof}
+\end{stmt}
+ 
+
+\subsection*{Коммутант симметрической группы}
+ 
+\begin{lemma}
+    Знак любого коммутатора равен $1$.
+ 
+    \begin{proof}
+        Знак --- гомоморфизм в абелеву группу $\{1,-1\}$, поэтому:
+        \[
+            \mathrm{sgn}([\sigma,\tau])
+            = \mathrm{sgn}(\sigma\tau\sigma^{-1}\tau^{-1})
+            = \mathrm{sgn}(\sigma)\,\mathrm{sgn}(\tau)\,\mathrm{sgn}(\sigma)^{-1}\,\mathrm{sgn}(\tau)^{-1}
+            = 1,
+        \]
+        так как в абелевой группе $\{1,-1\}$ можно переставлять множители.
+    \end{proof}
+\end{lemma}
+ 
+\begin{cor}
+    $[S_n, S_n] \subseteq A_n$.
+\end{cor}
+
+\begin{stmt}
+    $[S_3, S_3] = A_3$.
+    \begin{proof}
+        Сначала установим, что $[S_3, S_3] \subseteq A_3$ (любой коммутатор чётен, по лемме выше).
+ 
+        Далее, $|S_3| = 6$, $|A_3| = 3$, так что $A_3 = \{e, (123), (132)\}$ --- все 3-циклы.
+ 
+        Так как $[S_3, S_3] \leq A_3$ и $|A_3| = 3$, по теореме Лагранжа $|[S_3, S_3]| \in \{1, 3\}$.
+ 
+        Если $|[S_3, S_3]| = 1$, то $[S_3, S_3] = \{e\}$, то есть $S_3$ абелева --- противоречие (например, $(12)(23) \neq (23)(12)$).
+ 
+        Значит $|[S_3, S_3]| = 3$, откуда $[S_3, S_3] = A_3$.
+    \end{proof}
+\end{stmt}
+ 
+\begin{lemma}
+    $A_n$ порождается циклами длины $3$.
+    \begin{proof}
+        Пусть $T \leq S_n$ --- подгруппа, порождённая всеми циклами длины $3$.
+ 
+        \textbf{$T \subseteq A_n$.} Цикл длины $3$ чётен ($\mathrm{sgn} = (-1)^2 = 1$), значит все его произведения тоже чётны.
+ 
+        \textbf{$A_n \subseteq T$.} Возьмём произвольную $\sigma \in A_n$. Запишем её как произведение транспозиций:
+        \[
+            \sigma = \tau_1 \tau_2 \cdots \tau_N.
+        \]
+        Так как $\mathrm{sgn}(\sigma) = 1 = (-1)^N$, число $N$ чётно. Разобьём транспозиции попарно и покажем, что произведение любых двух транспозиций лежит в $T$.
+ 
+        Пусть $\tau_1 = (ab)$, $\tau_2 = (cd)$. Возможны три случая:
+ 
+        \textbf{Случай 1: $(ab) = (cd)$.} Тогда $\tau_1\tau_2 = e \in T$.
+ 
+        \textbf{Случай 2: $|\{a,b\}\cap\{c,d\}|=1$.} НУО $b = c, a \ne d$. Тогда:
+        \[
+            (ab)(bd) = (abd).
+        \]
+        Проверка:
+        \[
+            a \xrightarrow{(bd)} a \xrightarrow{(ab)} b, \quad
+            b \xrightarrow{(bd)} d \xrightarrow{(ab)} d, \quad
+            d \xrightarrow{(bd)} b \xrightarrow{(ab)} a.
+        \]
+        Таким образом $(ab)(bd) = (a\ b\ d)$ --- цикл длины $3$, лежит в $T$.
+ 
+        \textbf{Случай 3: $\{a,b\}\cap\{c,d\}=\varnothing$.} Тогда:
+        \[
+            (ab)(cd) = (acb)(acd).
+        \]
+        Проверка ($a,b,c,d$ --- различные элементы, сначала $(cd)$, потом $(ab)$):
+        \[
+            a \xrightarrow{(cd)} a \xrightarrow{(ab)} b, \quad
+            b \xrightarrow{(cd)} b \xrightarrow{(ab)} a, \quad
+            c \xrightarrow{(cd)} d \xrightarrow{(ab)} d, \quad
+            d \xrightarrow{(cd)} c \xrightarrow{(ab)} c.
+        \]
+        С другой стороны, $(acb)(acd)$:
+        \[
+            a \xrightarrow{(acd)} c \xrightarrow{(acb)} b, \quad
+            b \xrightarrow{(acd)} b \xrightarrow{(acb)} a, \quad
+            c \xrightarrow{(acd)} d \xrightarrow{(acb)} d, \quad
+            d \xrightarrow{(acd)} a \xrightarrow{(acb)} c.
+        \]
+        Совпадает.  Произведение двух 3-циклов лежит в $T$.
+ 
+        Итого, каждая пара транспозиций даёт элемент $T$, значит $\sigma \in T \Rightarrow A_n = T$.
+    \end{proof}
+\end{lemma}
+ 
+\begin{theorem}
+    $[S_n, S_n] = A_n$.
+    \begin{proof}
+        Уже знаем $[S_n, S_n] \subseteq A_n$.
+ 
+        Для обратного включения: по утверждению выше для любых трёх элементов $\{i,j,k\} \subset \{1,\ldots,n\}$ группа $S_{\{i,j,k\}} \cong S_3$ вкладывается в $S_n$ как подгруппа, переставляющая только $i,j,k$. По утверждению ниже коммутант $S_3$ --- это $A_3$, состоящий ровно из двух 3-циклов на $\{i,j,k\}$. Значит, все 3-циклы лежат в $[S_n, S_n]$.
+ 
+        По лемме $A_n$ порождается 3-циклами, откуда $A_n \subseteq [S_n, S_n]$.
+    \end{proof}
+\end{theorem}
+ 

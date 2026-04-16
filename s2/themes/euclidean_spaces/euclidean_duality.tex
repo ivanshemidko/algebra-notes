@@ -1,0 +1,87 @@
+\section{Двойственность и корреляция}
+
+\begin{definition}
+    Пусть $v \in V,  \text{определим} \langle -, v\rangle: V \rightarrow \mathbb{R}$.
+    Эта функция линейна по первому аргкменту $\Rightarrow \langle -, v\rangle \in V^*$ 
+    \[
+    G_V \colon V \to V^*, \quad v \mapsto \langle-, v\rangle
+    \]
+\end{definition}
+
+\begin{remark}
+    Не путать с матрицей Грама, тут $V$ -- большое.
+\end{remark}
+
+\begin{stmt}
+    $G_V$ --- изоморфизм (если $V$ конечномерно, как и в многих утверждениях раньше).
+    \begin{proof}
+        \textbf{Инъективность.} $\ker G_V = \{v \mid \langle -, v \rangle \equiv 0\} = \{0\}$,
+        поскольку при $v \neq 0$ функционал $\langle -, v \rangle$ ненулевой:
+        $\langle v, v \rangle > 0$.
+
+        \textbf{Сюръективность.} $\dim V = \dim V^*$, поэтому инъекция автоматически является биекцией. 
+
+        \textbf{Линейность.} Скалярное произведение линейно по второму аргументу,
+        откуда $G_V$ линейно. \\ Следовательно, $G_V$ --- изоморфизм.
+    \end{proof}
+
+\end{stmt}
+
+\begin{remark}
+    Такой изоморфизм \textit{почти канонический}.
+\end{remark}
+
+\begin{definition}[$G_V$ — евклидова корреляция]
+    Пусть $e_1, \dots, e_n$ — базис $V$ и $e_1^*, \dots, e_n^* \in V^*$ — двойств.\ базис.
+    Положим
+    \[
+        e_i^\times := G_V^{-1}(e_i^*) \in V, \qquad
+        \langle e_i, e_j^\times \rangle = e_i^*(e_j) = \begin{cases} 1, & i = j, \\ 0, & i \neq j. \end{cases}
+    \]
+
+\end{definition}
+
+\begin{definition}
+    $e_1^\times, \dots, e_n^\times$ называется \emph{евклидовым двойственным базисом} пространства $V$.
+
+    $G_{\mathbf{e} \mathbf{e^\times}} = E$ — матрица Грама наборов $\mathbf{e}$ и $\mathbf{e^\times}$.
+\end{definition}   
+
+\begin{remark}
+    Пусть $C_{\mathbf{e}\,\mathbf{e}^\times}$~--- матрица перехода от $\mathbf{e}$ к
+    $\mathbf{e}^\times$. Тогда
+    \[
+        G_{\mathbf{e}\,\mathbf{e}^\times} = G_{\mathbf{e}} \cdot C_{\mathbf{e}\,\mathbf{e}^\times}.
+    \]
+\end{remark}
+
+\begin{proplist}
+    \item
+    Если $e$ — ортонорм.\ базис, то $\mathbf{e^\times} = \mathbf{e}$.
+    \item
+    $(\mathbf{e^\times})^\times = \mathbf{e}$
+\begin{proof}
+    \begin{proofsteps}
+        \item Покажем, что $G_V(e_i) = e_i^*$, тогда $e_i = G_V^{-1}(e_i^*) = e_i^\times$:
+        \[
+            (G_V e_i)(e_j)
+            = \langle e_j, e_i \rangle
+            = \delta_{ij}
+            = e_i^*(e_j).
+        \]
+        Следовательно, $e_i^\times = e_i$ для всех $i$.
+
+        \item Покажем, что $e_i = e_i^{\times\times}$, т.\,е.\ $G_V(e_i) = (e_i^\times)^*$:
+        \[
+            G_V(e_i)(e_j^\times)
+            = \langle e_j^\times, e_i \rangle
+            = \langle e_i, e_j^\times \rangle
+            = \delta_{ij}
+            = (e_i^\times)^*(e_j^\times).
+        \]
+        Где $\langle e_i, e_j^\times \rangle = \delta_{ij}$ — по определению $e_j^\times$.
+        Следовательно, $e_i = G_V^{-1}((e_i^\times)^*) = e_i^{\times\times}$.
+    \end{proofsteps}
+\end{proof}
+
+\end{proplist}

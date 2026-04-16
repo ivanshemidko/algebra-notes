@@ -1,0 +1,198 @@
+\section{Объём}
+
+\begin{definition}
+    Пусть $V$ --- евклидово пространство размерности $n$.
+    \emph{Объём} --- это отображение $\omega: \underbrace{V \times V \times \cdots \times V}_{n} \to \mathbb{R}$, такое что:
+    \begin{enumerate}
+        \item \textbf{Кососимметричность:}
+        \[
+            \omega(v_1, \dots, v_i + \lambda v_j, \dots, v_n)
+            = \omega(v_1, \dots, v_n),
+            \quad i \neq j,\ \lambda \in \mathbb{R}.
+        \]
+        \item \textbf{Однородность:}
+        \[
+            \omega(v_1, \dots, \lambda v_i, \dots, v_n)
+            = \lambda\, \omega(v_1, \dots, v_n), \quad \lambda \in \mathbb{R}.
+        \]
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    Геометрический смысл свойства~1: если к одному вектору прибавить
+    кратное другого (сдвинуть сторону параллелограмма), объём не меняется.
+
+    \begin{center}
+    \begin{tikzpicture}[>=stealth, thick]
+        % Исходный параллелограмм
+        \fill[cbBlueBack] (0,0) -- (3,0) -- (3.8,1.5) -- (0.8,1.5) -- cycle;
+        \draw[->] (0,0) -- (3,0) node[below] {$v_1$};
+        \draw[->] (0,0) -- (0.8,1.5) node[above left] {$v_2$};
+        \draw[dashed, cbGray] (3,0) -- (3.8,1.5) -- (0.8,1.5);
+        \draw[<->] (4.1,0) -- (4.1,1.5) node[midway, right] {$h$};
+        \node at (1.5, -0.6) {$S = v_1 \cdot h$};
+
+
+        % Сдвинутый параллелограмм
+        \fill[cbRoseBack, opacity=0.5] (6,0) -- (9,0) -- (11,1.5) -- (8,1.5) -- cycle;
+        \draw[->] (6,0) -- (9,0) node[below] {$v_1$};
+        \draw[->] (6,0) -- (8,1.5) node[above] {$v_2 + \lambda v_1$};
+        \draw[dashed, cbGray] (9,0) -- (11,1.5) -- (8,1.5);
+        \draw[<->] (11.2,0) -- (11.2,1.5) node[midway, right] {$h$};
+        \node at (8.5, -0.6) {$S = v_1 \cdot h$};
+    \end{tikzpicture}
+    \end{center}
+
+    Высота $h$ не меняется при сдвиге, поэтому площадь (и объём) одинаковы.
+\end{example}
+
+
+
+\begin{stmt}
+    Пусть $\omega$ --- объём. Тогда:
+    \begin{enumerate}[label=\textbf{\arabic*.}]
+        \item $\omega$ полилинейна,
+        \item $\omega$ знакопеременна:
+        \[
+            \omega(\dots, v_i, \dots, v_j, \dots) = -\omega(\dots, v_j, \dots, v_i, \dots),
+        \]
+        \item $\omega(v_1, \dots, v_n) = 0$, если $v_1, \dots, v_n$ линейно зависимы (\textcircled{$\Rightarrow$} выполняется тольео если $\omega \ \not\equiv \ 0$).
+    \end{enumerate}
+
+    \begin{proof}
+        \textbf{\emph{3}} в \textcircled{$\Leftarrow$}: Пусть $v_1, \dots, v_n$ линейно зависимы. НУО $v_1 = \sum_{i=2}^{n} \alpha_i v_i$. Тогда:
+    
+        \[  
+            \omega(v_1, \dots, v_n)
+            = \omega\!\left(\sum_{i=2}^{n} \alpha_i v_i,\, v_2, \dots, v_n\right)
+            = \omega(0, v_2, \dots, v_n)
+            = \omega(0 \cdot 0, v_2, \dots, v_n)
+            = 0 \cdot \omega(0, v_2, \dots, v_n) = 0        
+        \]
+        \\
+
+        \textbf{\emph{1}} (полилинейность по первому аргументу, остальные аналогично): \\
+        Хотим $\omega(\alpha v + \beta u, \dots) = \alpha \omega(v, \dots) + \beta \omega(u, \dots)$
+        Для этого надо $\omega(v + u, \dots) = \omega(v, \dots) + \omega(u, v_2, \dots, v_n)$.
+
+        \textbf{1.а)} Если $v, v_2, \dots, v_n$ и $u, v_2, \dots, v_n$ лин.\ зависимы,
+        то $v + u,\, v_2, \dots, v_n$ тоже линейно зависимы, и равенство $0 = 0 + 0$ очевидно.
+
+        \textbf{1.б)} НУО $v, v_2, \dots, v_n$ лин.\ независимы $\Rightarrow$ базис $V$,
+        поэтому $u = \lambda v + \sum_{i=2}^{n} \alpha_i v_i$. Тогда:
+        \begin{align*}
+            \omega\!\left(v + u,\, v_2, \dots, v_n\right)
+            &= \omega\!\left(v + \lambda v + \sum_{i=2}^{n}\alpha_i v_i,\, v_2, \dots, v_n\right) \\
+            &= \omega\!\left((1+\lambda)v,\, v_2, \dots, v_n\right) \\
+            &= (1+\lambda)\,\omega(v, v_2, \dots, v_n) \\
+            &= \omega(v, v_2, \dots, v_n) + \omega\!\left(\lambda v + \sum_{i=2}^{n}\alpha_i v_i,\, v_2, \dots, v_n\right) \\
+            &= \omega(v, v_2, \dots, v_n) + \omega(u, v_2, \dots, v_n) \\
+        \end{align*}
+
+        \textbf{\emph{2}}:
+        \begin{align*}
+            \omega(\dots, u+v, \dots, u+v, \dots)
+            &= \omega(\dots, u, \dots, u, \dots)
+            + \omega(\dots, u, \dots, v, \dots) \\
+            &\quad + \omega(\dots, v, \dots, u, \dots)
+            + \omega(\dots, v, \dots, v, \dots) \\
+            &= 0 + \omega(\dots, u, \dots, v, \dots)
+            + \omega(\dots, v, \dots, u, \dots) + 0
+        \end{align*}
+        Но левая часть равна нулю по пункту 3 (два одинаковых аргумента), поэтому:
+        \[
+            \omega(\dots, u, \dots, v, \dots) + \omega(\dots, v, \dots, u, \dots) = 0
+        \]
+        \[
+            \implies \omega(\dots, u, \dots, v, \dots) = -\omega(\dots, v, \dots, u, \dots) 
+        \]
+
+        Таким образом $\omega \in (\bigwedge^n V)^*$. \\
+
+
+        \textbf{\emph{3}} в \textcircled{$\Rightarrow$}: \\
+        Пусть $\omega \neq 0$, тогда
+        $\omega$ --- базис $(\bigwedge^n V)^*$.
+
+        Пусть $\exists\, v_1, \dots, v_n$ лин.\ независимы $\Rightarrow$ базис $V$,
+        поэтому $\{v_1 \wedge v_2 \wedge \dots \wedge v_n\}$ --- базис $\bigwedge^n V$. Тогда:
+        \[
+            (v_1 \wedge \dots \wedge v_n)^* = \lambda\omega
+        \]
+        \[
+            \omega(v_1 \wedge \dots \wedge v_n)
+            = \frac{1}{\lambda}(v_1 \wedge \dots \wedge v_n)^*(v_1 \wedge \dots \wedge v_n)
+            = \frac{1}{\lambda} \neq 0 \qquad \square
+        \]
+
+    \end{proof}
+\end{stmt}
+
+
+
+\begin{remark}
+    Таким образом, любой объём --- это элемент $(\bigwedge^n V)^*$.
+    Как следствие, если $\omega_1$ и $\omega_2$ --- объёмы ($\neq 0$), то
+    $\omega_1 = \lambda \omega_2$ для некоторого $\lambda \in \mathbb{R}$.
+\end{remark}
+
+
+\begin{stmt}
+    Пусть $V$ --- евклидово пространство размерности $n$,
+    $\mathbf{e} = (e_1, \dots, e_n)$ --- базис и $\mathbf{v} = (v_1, \dots, v_n)$ --- набор векторов,
+    где $v_i = \sum_{j=1}^{n} c_{ji} e_j$, то есть $\mathbf{e} \cdot C_{\mathbf{e}\mathbf{v}} = \mathbf{v}$. Тогда:
+    \[
+        \omega(v_1, \dots, v_n) = \omega(e_1, \dots, e_n) \cdot \det C_{\mathbf{e}\mathbf{v}}
+    \]
+
+    \begin{proof}
+        $L \colon V \to V$, $e_i \mapsto v_i$.
+        \[
+            \omega(Le_1 \wedge \dots \wedge Le_n) 
+            = \omega((\bigwedge^n L)(e_1 \wedge \dots \wedge e_n))
+            = \underbrace{\det L}_{\det C_{ev}} \omega(e_1 \wedge \dots \wedge e_n).
+        \]
+    \end{proof}
+\end{stmt}
+
+
+\begin{definition}[Евклидов объём]
+    Пусть $e_1, \dots, e_n$ --- ортонормированный базис $V$. Тогда
+    \[
+        \exists!\, \omega \colon \omega(e_1 \wedge \dots \wedge e_n) = 1.
+    \]
+    Если $f_1, \dots, f_n$ --- ортонормированный базис, то
+    \[
+        \omega(f_1 \wedge \dots \wedge f_n)
+        = \underbrace{\omega(e_1 \wedge \dots \wedge e_n)}_{=\,1}
+          \cdot
+          \underbrace{\det C_{ef}}_{=\,\pm 1}
+        = \pm 1.
+    \]
+    $\omega$ называется \emph{евклидовым объёмом}.
+    \begin{remark}
+        \textbf{Построение $\omega$.} Так как $\dim(\Lambda^n V)^* = 1$, возьмём
+        любую ненулевую форму $\tilde{\omega} \in (\Lambda^n V)^*$.
+        Положим $\alpha := \tilde{\omega}(e_1 \wedge \dots \wedge e_n) \neq 0$ и
+        \[
+            \omega := \frac{1}{\alpha}\,\tilde{\omega}.
+        \]
+        Тогда $\omega(e_1 \wedge \dots \wedge e_n) = 1$, и такая $\omega$ единственна:
+        если $(\widetilde{\omega} - \frac{1}{\alpha}\,\tilde{\omega})(e_1 \wedge \dots \wedge e_n) = 0$,
+        то $\widetilde\omega = \frac{1}{\alpha}\,\tilde{\omega}$.
+
+        \textbf{Знак $\pm 1$.} Матрица перехода $C_{ef}$ между двумя
+            ортонормированными базисами удовлетворяет $C^T C = I$, поэтому
+            \[
+                1 = \det(C^T C) = \det(C^T)\cdot\det(C) = \det(C)^2
+                \implies \det C = \pm 1.
+            \]
+            Здесь использовано, что $\det(C^T) = \det(C)$, так как
+            определитель по строкам и по столбцам совпадает.
+
+            Знак зависит от ориентации базисов: одинаковая ориентация даёт $+1$,
+            противоположная --- $-1$. После фиксации базиса ориентация не меняется,
+            и знак $\omega$ определён однозначно.
+    \end{remark}
+\end{definition}
+
