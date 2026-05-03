@@ -1,0 +1,270 @@
+\section{Изотропные и анизотропные векторы}
+
+Далее $B$ --- симметричная билинейная форма на пространстве $V$ над полем $k$, $\mathrm{char}\, k \neq 2$.
+
+\begin{definition}
+    Вектор $v \in V$ называется \emph{изотропным}, если $B(v, v) = 0$. Иначе $v$ называется \emph{анизотропным}.
+\end{definition}
+
+
+\begin{stmt}
+    Если $v$ анизотропен, то $B\big|_{\langle v \rangle}$ невырожденна, и $V = \langle v \rangle \oplus \langle v \rangle^\perp$.
+    \begin{proof}
+        Сужение $B$ на $\langle v \rangle$ имеет матрицу Грама $(B(v,v)) \neq 0$, значит невырожденна.
+        Разложение следует из теоремы об ортогональном дополнении.
+    \end{proof}
+\end{stmt}
+
+
+\section{Гиперболические пространства}
+
+\begin{definition}
+    Симметричная билинейная форма $B$ называется \emph{гиперболической}, если в некотором базисе её матрица Грама имеет вид
+    \[
+        G = \begin{pmatrix} 0 & E \\ E & 0 \end{pmatrix}.
+    \]
+\end{definition}
+
+
+\begin{stmt}
+    Пусть $B$ --- невырожденная симметричная билинейная форма на $V$. Тогда
+    \[
+        V \cong H \oplus U,
+    \]
+    где $B\big|_H$ --- гиперболическая форма, а $U$ --- анизотропное подпространство (то есть все ненулевые векторы в $U$ анизотропны).
+
+    \begin{proof}
+        Если все ненулевые векторы $V$ анизотропны, то $H = 0$ и $U = V$.
+
+        Пусть $v \in V$ --- изотропный, $v \neq 0$. Так как $B$ невырожденна, $\exists\, \bar{v}\colon B(v, \bar{v}) \neq 0$.
+        Положим $\bar{v}' \coloneqq \bar{v} / B(v, \bar{v})$, тогда $B(v, \bar{v}') = 1$.
+
+        Покажем, что можно выбрать $\bar{v}'$ изотропным. Если $B(\bar{v}', \bar{v}') \neq 0$,
+        заменим $\bar{v}'$ на $\bar{v}' - \frac{B(\bar{v}', \bar{v}')}{2} v$. Тогда $B(v, \bar{v}') = 1$ сохраняется, а $B(\bar{v}', \bar{v}') = 0$.
+
+        Векторы $v, \bar{v}'$ линейно независимы (иначе $B(v, \bar{v}') = 0$).
+        Матрица Грама $B\big|_{\langle v, \bar{v}' \rangle}$ в базисе $v, \bar{v}'$:
+        \[
+            G = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}.
+        \]
+        Сужение $B\big|_{\langle v, \bar{v}' \rangle}$ невырожденно ($\det G = -1 \neq 0$),
+        поэтому $V = \langle v, \bar{v}' \rangle \oplus \langle v, \bar{v}' \rangle^\perp$.
+
+        По индукции: $\langle v, \bar{v}' \rangle^\perp$ раскладывается как $H' \oplus U'$.
+        Итого $V = (\langle v, \bar{v}' \rangle \oplus H') \oplus U'$.
+
+        \textbf{База индукции:} $\dim V = 1$. Тогда $\forall v' \in V$: $v' = \lambda v$ и $B(v', v') = \lambda^2 B(v, v)$.
+        Если $B(v, v) = 0$, то $B \equiv 0$ на $V$, что противоречит невырожденности. Значит все ненулевые векторы анизотропны.
+    \end{proof}
+\end{stmt}
+
+
+\section{Отражения}
+
+\begin{definition}
+    Пусть $e \in V$ --- анизотропный вектор. \emph{Отражение} вдоль $e$ (или относительно $\langle e \rangle^\perp$):
+    \[
+        \sigma_e(v) \coloneqq v - \frac{2B(v, e)}{B(e, e)}\, e.
+    \]
+    Геометрически: $v = \lambda e + u$, где $u \in \langle e \rangle^\perp$, и $\sigma_e(v) = -\lambda e + u$.
+\end{definition}
+
+\begin{remark}
+    Коэффициент $\lambda$ находится из условия $B(v, e) = \lambda B(e, e)$, откуда $\lambda = \dfrac{B(v, e)}{B(e, e)}$.
+\end{remark}
+
+
+\begin{lemma}
+    Пусть $v, u \in V$ --- анизотропные, $B(v, v) = B(u, u)$, $B$ невырожденна. Тогда $\exists\, e\colon u = \sigma_e(v)$ или $-u = \sigma_e(v)$.
+
+    \begin{proof}
+        Покажем, что хотя бы один из $v + u$, $v - u$ анизотропен.
+
+        Вычислим:
+        \[
+            B(v + u,\, v - u) = B(v, v) - B(v, u) + B(u, v) - B(u, u) = B(v,v) - B(u,u) = 0.
+        \]
+        Если бы оба были изотропны: $B(v+u, v+u) = 0$ и $B(v-u, v-u) = 0$.
+        Тогда $v+u$ и $v-u$ --- базис $\langle v, u \rangle$, и матрица Грама в этом базисе нулевая. Но тогда $B(v, v) = 0$ --- противоречие с анизотропностью $v$.
+
+        Если $v + u$ анизотропен, то $\sigma_{v+u}(v) = -u$:
+        \[
+            \sigma_{v+u}(v) = v - \frac{2B(v+u,\, v)}{B(v+u,\, v+u)}\,(v+u) =
+            v - \frac{2(B(v,v) + B(u,v))}{2B(v,v) + 2B(v,u)}\,(v+u) = v - (v+u) = -u.
+        \]
+
+        Если $v - u$ анизотропен, то $\sigma_{v-u}(v) = u$:
+        \[
+            \sigma_{v-u}(v) = v - \frac{2B(v-u,\, v)}{B(v-u,\, v-u)}\,(v-u) =
+            v - \frac{2(B(v,v) - B(u,v))}{2B(v,v) - 2B(v,u)}\,(v-u) = v - (v-u) = u.
+        \]
+    \end{proof}
+\end{lemma}
+
+
+\begin{theorem}
+    Пусть $f\colon V \to V$ --- изометрия, $B$ --- невырожденная симметричная билинейная форма,
+    $\dim V = n$. Тогда $f$ есть композиция не более чем $2n - 1$ отражений.
+
+    \begin{example}
+    $V = \mathbb{R}^2$, $B = \langle \cdot, \cdot \rangle$ --- стандартное скалярное произведение.
+    Пусть $e, e' \in V$ --- анизотропные. Тогда:
+    \[
+        \sigma_e(\sigma_{e'}(v)) = \sigma_e\!\left(v - \frac{2\langle v, e' \rangle}{\langle e', e' \rangle}\, e'\right) = 
+        v - \frac{2\langle v, e' \rangle}{\langle e', e' \rangle}\, e' -
+        \frac{2\left\langle v - \frac{2\langle v, e' \rangle}{\langle e', e' \rangle}\, e',\, e\right\rangle}{\langle e, e \rangle}\, e.
+    \]
+    Композиция двух отражений --- это поворот на удвоенный угол между $e$ и $e'$.
+\end{example}
+
+\end{theorem}
+
+
+\section{Квадратичные формы}
+
+\begin{definition}
+    Функция $Q\colon V \to k$ называется \emph{квадратичной формой},
+    если существует базис $e_1, \dots, e_n$ пространства $V$ и однородный многочлен $q(x_1, \dots, x_n)$ степени $2$, такой что
+    \[
+        Q(\alpha_1 e_1 + \dots + \alpha_n e_n) = q(\alpha_1, \dots, \alpha_n).
+    \]
+\end{definition}
+
+
+\begin{remark}
+    Многочлен $q(x_1, \dots, x_n)$ называется \emph{однородным степени $d$}, если $\forall\, \lambda \in k$:
+    \[
+        q(\lambda x_1, \dots, \lambda x_n) = \lambda^d\, q(x_1, \dots, x_n).
+    \]
+\end{remark}
+
+
+\begin{example}
+    $q(x_1, x_2, x_3, \dots, x_n) = x_1 x_2 + x_3 x_n + x_2^2$ --- однородный многочлен степени $2$.
+\end{example}
+
+
+\begin{definition}[Матрица Грама квадратичной формы]
+    Запишем $q(x_1, \dots, x_n) = \sum_{i, j} a_{ij}\, x_i x_j$,
+    где $a_{ij}$ --- коэффициент при $x_i x_j$, $a_{ji}$ --- при $x_j x_i$. Положим
+    \[
+        b_{ij} \coloneqq \frac{a_{ij} + a_{ji}}{2} = b_{ji}.
+    \]
+    Матрица $G = (b_{ij})$ называется \emph{матрицей Грама} квадратичной формы. Тогда
+    \[
+        Q(v) = Q(\alpha_1 e_1, \dots, \alpha_n e_n) = q(\alpha_1, \dots, \alpha_n) = v^T G\, v, \\
+        \qquad q(\alpha_1, \dots, \alpha_n) = \sum_{i,j} a_{ij}\, \alpha_i \alpha_j = \sum_{i,j} b_{ij}\, \alpha_i \alpha_j.
+    \]
+\end{definition}
+
+
+\begin{stmt}
+    При замене базиса ($C_{ee'}$ --- матрица перехода) матрица Грама преобразуется:
+    \[
+        v^T G v \leadsto (C_{ee'} v)^T G (C_{ee'} v) = v^T \left( C_{ee'}^T G C_{ee'} \right) v
+    \]
+\end{stmt}
+
+
+\begin{stmt}[Биекция между симметричными билинейными и квадратичными формами]
+    Матрица Грама $G$ квадратичной формы --- это симметричная матрица,
+    и она совпадает с матрицей Грама симметричной билинейной формы $B(v, u) = v^T G\, u$.
+
+    Имеется взаимно однозначное соответствие:
+    \[
+        \{\text{симм. билинейные формы}\} \longleftrightarrow \{\text{квадратичные формы}\}.
+    \]
+    В прямую сторону: $Q(v) \coloneqq B(v, v)$.
+
+    В обратную: $B(v, u) \coloneqq \dfrac{Q(v + u) - Q(v) - Q(u)}{2}$.
+
+    \begin{proof}
+        Проверка: $Q(v) = B(v, v)$ и
+        \[
+            \frac{Q(v+u) - Q(v) - Q(u)}{2} = \frac{B(v+u,\, v+u) - B(v,v) - B(u,u)}{2} = \frac{2B(v,u)}{2} = B(v,u).
+        \]
+        Обратная композиция:
+        \[
+            \frac{Q(v + u) - Q(v) - Q(u)}{2}\bigg|_{u = v} = \frac{Q(2v) - 2Q(v)}{2} = \frac{4Q(v) - 2Q(v)}{2} = Q(v).
+        \]
+    \end{proof}
+\end{stmt}
+
+
+\begin{definition}
+    Квадратичная форма $Q$ называется \emph{невырожденной}, если соответствующая симметричная билинейная форма $B$ невырожденна.
+\end{definition}
+
+
+\section{Сигнатура квадратичной формы}
+
+\begin{theorem}[Лагранжа]
+    Если $Q$ --- квадратичная форма на $V$ над $\mathbb{R}$, то существует базис $e_1, \dots, e_n$, в котором
+    \[
+        Q(x_1 e_1, \dots, x_n e_n) = \beta_1 x_1^2 + \beta_2 x_2^2 + \dots + \beta_n x_n^2.
+    \]
+    Сделаем замену базиса: положим $y_i = \sqrt{|\beta_i|}\, x_i$ при $\beta_i \neq 0$,
+    то есть новый базисный вектор масштабируется на $\sqrt{|\beta_i|}$.
+    Тогда $\beta_i x_i^2 = \pm y_i^2$, поскольку
+    \[
+        \beta_i = \pm\sqrt{|\beta_i|}^2, \qquad \text{например } {-3} = -(\sqrt{3})^2.
+    \]
+    После замены форма принимает вид
+    \[
+        Q = \pm\!\left(\sqrt{|\beta_1|}\, x_1\right)^2 \pm \dots \pm \left(\sqrt{|\beta_n|}\, x_n\right)^2
+          = \underbrace{y_1^2 + \dots + y_p^2}_{p \text{ положительных}} 
+            - \underbrace{y_{p+1}^2 - \dots - y_{p+q}^2}_{q \text{ отрицательных}}.
+    \]
+    Пара $(p, q)$ называется \emph{сигнатурой} квадратичной формы.
+\end{theorem}
+
+
+\section{Лемма Витта}
+
+\begin{theorem}[Витта]
+    Пусть $U_1, W_1, U_2, W_2$ --- пространства с невырожденными симметричными билинейными формами.
+    Если две из трёх следующих пар изометричны, то и третья пара изометрична:
+    \begin{enumerate}
+        \item $U_1 \cong U_2$,
+        \item $W_1 \cong W_2$,
+        \item $U_1 \oplus W_1 \cong U_2 \oplus W_2$.
+    \end{enumerate}
+    \begin{proof}
+        $(1), (2) \Rightarrow (3)$: очевидно.
+
+        $(2), (3) \Rightarrow (1)$: индукция по $\dim U_1$.
+
+        \textbf{База:} $\dim U_1 = 1$. Пусть $u \in U_1$, $u \neq 0$ --- анизотропный
+        (в размерности $1$ все ненулевые векторы анизотропны, так как форма невырождена).
+
+        Пусть $f\colon U_1 \to U_2$ --- изометрия и $h\colon U_1 \oplus W_1 \to U_2 \oplus W_2$ --- изометрия.
+        Так как $f$ и $h$ --- изометрии, $f(u)$ и $h(u, 0)$ тоже анизотропны с равными значениями формы:
+        \[
+            B(f(u),\, f(u)) = B(u, u) = B(h(u,0),\, h(u,0)).
+        \]
+        По лемме об отражениях $\exists$ отражение $\sigma\colon U_2 \oplus W_2 \to U_2 \oplus W_2$ такое, что
+        \[
+            \sigma(h(u, 0)) = \pm f(u) \in U_2.
+        \]
+        Рассмотрим вложение $U_2 \hookrightarrow U_2 \oplus W_2$, $f(u) \mapsto f(u)$,
+        и отображение $\sigma \circ h\colon U_1 \oplus W_1 \to U_2 \oplus W_2$, которое является изометрией.
+        Поскольку $(\sigma \circ h)(u, 0) = \pm f(u) \in U_2$, отображение $\sigma \circ h$ переводит
+        $\langle u \rangle \subseteq U_1 \oplus W_1$ в $\langle f(u) \rangle \subseteq U_2$,
+        и следовательно ортогональные дополнения переходят друг в друга:
+        \[
+            \langle u \rangle^\perp \xrightarrow{\ \sigma \circ h\ } \langle f(u) \rangle^\perp.
+        \]
+        Имеем $\langle u \rangle^\perp = W_1$ и $\langle f(u) \rangle^\perp = W_2$,
+        поэтому $(\sigma \circ h)\big|_{W_1}$ --- изометрия $W_1 \to W_2$.
+
+        \textbf{Переход:} $\dim U_1 = n$. Берём анизотропный $u \in U_1$.
+        Тем же приёмом строим $\sigma$ так, что $\sigma \circ h$ отображает $\langle u \rangle$ в $\langle \sigma h(u,0) \rangle \subseteq U_2$.
+        Тогда $\sigma \circ h$ ограничивается на ортогональные дополнения:
+        \[
+            \langle u \rangle^{\perp_{U_1}} \oplus W_1 \longrightarrow
+            \langle \sigma h(u,0) \rangle^{\perp_{U_2}} \oplus W_2,
+        \]
+        где $\dim \langle u \rangle^{\perp_{U_1}} = n - 1$.
+        По индукционному предположению $W_1 \cong W_2$.
+    \end{proof}
+\end{theorem}
