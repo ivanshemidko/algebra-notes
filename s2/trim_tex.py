@@ -13,17 +13,21 @@ def find_cut(line, start):
             cut = i + 1
             tail = line[cut:].lstrip()
             if len(tail) >= MIN_TAIL:
-                return cut
+                # проверяем что не внутри math mode
+                if line[:cut].count('$') % 2 == 0:
+                    return cut
         if c == '$' and i > start:
             cut = i
             tail = line[cut:].lstrip()
             if len(tail) >= MIN_TAIL:
-                return cut
+                if line[:cut].count('$') % 2 == 0:
+                    return cut
     for i in range(HARD_LEN, len(line)):
         if line[i] == ' ':
             tail = line[i+1:]
             if len(tail.lstrip()) >= MIN_TAIL:
-                return i + 1
+                if line[:i].count('$') % 2 == 0:
+                    return i + 1
     return -1
 
 def wrap_line(line, min_len=MIN_LEN, hard_len=HARD_LEN):
