@@ -24,6 +24,18 @@
 \geometry{left=22mm,right=22mm,top=25mm,bottom=27mm,heightrounded}
 \usepackage{enumitem}
 
+ % --- Headings ---
+\makeatletter
+\renewcommand*{\numberline}[1]{\hb@xt@3em{#1\hfil}}
+\makeatother
+\AtBeginDocument{
+  \makeatletter
+  \renewcommand*{\numberline}[1]{#1\hspace{0.8em}}
+  \makeatother
+}
+
+
+
 % --- Colors for blocks ---
 \usepackage{xcolor}
 \definecolor{cbBlueBack}{RGB}{246,249,252}
@@ -209,13 +221,18 @@
 
 \part{Теория полей}
 \themefile{fields/fields_start.tex}
-% TODO
-% \themefile{fields/field_extensions.tex}
-% \themefile{fields/algebraic_extensions.tex}
+\themefile{fields/field_extensions.tex}
+\themefile{fields/algebraic_extensions.tex}
+\themefile{fields/gauss_luroth.tex}
 
-% 9.04
-% 16.04
-% 23.04
+\part{Теория Галуа}
+\themefile{galois/galois1.tex}
+\themefile{galois/galois2.tex}
+
+\part{Построения циркулем и линейкой}
+\themefile{straightedge_compass/s&c_construction.tex}
+
+% TODO
 % 03.05
 % 07.05
 % 14.05
