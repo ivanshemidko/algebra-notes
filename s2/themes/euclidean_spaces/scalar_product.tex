@@ -3,7 +3,7 @@
 \begin{definition}
     Евклидово пространство --- это векторное пространство $V$ над $\mathbb{R}$
     вместе с билинейным отображением $\langle\cdot,\cdot\rangle \colon V \times V  \to \mathbb{R}$,
-    такое что 
+    такое что
     \[
     \begin{aligned}
         &\forall v \in V, \ v \ne 0 \quad \langle v,v\rangle > 0, \\
@@ -55,7 +55,8 @@
 
 
 \begin{definition}
-    Базис $e_1, e_2, \dots , e_n$ евклидова пространства $V$ называется \emph{ортогональным}, если $\langle e_i, e_j\rangle = 0$ при $i \neq j.\\$
+    Базис $e_1, e_2, \dots , e_n$ евклидова пространства $V$ называется \emph{ортогональным}, если $\langle e_i, e_j\rangle = 0$ при
+    $i \neq j.\\$
     Такой базис называется \emph{ортонормированным}, если дополнительно $\|e_i\| = 1 \ \ \forall i = 1, \dots ,n.$
 \end{definition}
 
@@ -75,13 +76,13 @@
       \draw[->, thick] (0,0) -- (0,1.2) node[above] {$\mathbf{e}_2$};
       \draw[->, thick, dashed, blue] (0,0) -- (0.85,0.85) node[above right] {$T\mathbf{e}_1$};
       \draw[->, thick, dashed, blue] (0,0) -- (-0.85,0.85) node[above left]  {$T\mathbf{e}_2$};
-    \end{tikzpicture} 
+    \end{tikzpicture}
   \end{center}
 \end{stmt}
 
 
 \begin{example}
-    
+
 $L^2([0,\pi])$
 
 Скалярное произведение:
@@ -96,10 +97,10 @@ $L^2([0,\pi])$
 $\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi d\sin^2 x =
 \frac{1}{2} \sin^2 x \Big|_0^\pi = 0 $
 \par
- 
+
 \emph{(lection version, idk)}
 
-% $\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi \sin 2x \, dx = 
+% $\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi \sin 2x \, dx =
 % -\frac{1}{4} \cos 2x \Big|_0^\pi = -\frac{1}{4} (1 - 1) = 0$
 \end{example}
 
@@ -187,10 +188,12 @@ $\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi d\sin^2 x =
 \begin{stmt}
     Пусть $e_1, \dots, e_n$ --- ортогональный базис $V$. Тогда
     \[
-        \forall\, v \in V \implies \exists\, \mathbf{\lambda}_1, \dots, \mathbf{\lambda}_n : \quad v = \sum_{i=1}^{n} \mathbf{\lambda}_i e_i
+        \forall\, v \in V \implies \exists\, \mathbf{\lambda}_1, \dots, \mathbf{\lambda}_n : \quad v = \sum_{i=1}
+        ^{n} \mathbf{\lambda}_i e_i
     \]
     \[
-        \langle v, e_k \rangle = \sum_{i=1}^{n} \mathbf{\lambda}_i \langle e_i, e_k \rangle = \mathbf{\lambda}_k \langle e_k, e_k \rangle
+        \langle v, e_k \rangle = \sum_{i=1}^{n} \mathbf{\lambda}_i \langle e_i, e_k \rangle = \mathbf{\lambda}
+        _k \langle e_k, e_k \rangle
         \implies
         \boxed{\mathbf{\lambda}_k = \frac{\langle v, e_k \rangle}{\|e_k\|^2}}
     \]
@@ -260,9 +263,11 @@ $\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi d\sin^2 x =
         \[
             \Gamma_{\mathbf{w}} = \det G_{\mathbf{w}} = 0
         \]
-        Если $w_1, \dots, w_m$ линейно независимы, то по т. Грама-Шмидта в их линейной оболочке $\exists$ ортонормированный базис $\mathbf{e} = (e_1, \dots, e_m)$. Тогда:
+        Если $w_1, \dots, w_m$ линейно независимы, то по т. Грама-Шмидта в их линейной оболочке $\exists$ ортонормированный базис
+        $\mathbf{e} = (e_1, \dots, e_m)$. Тогда:
         \[
-            G_{\mathbf{w}} = C_{\mathbf{e}\mathbf{w}}^T\, G_{\mathbf{e}}\, C_{\mathbf{e}\mathbf{w}} = C_{\mathbf{e}\mathbf{w}}^T C_{\mathbf{e}\mathbf{w}}
+            G_{\mathbf{w}} = C_{\mathbf{e}\mathbf{w}}^T\, G_{\mathbf{e}}\, C_{\mathbf{e}\mathbf{w}} = C_{\mathbf{e}
+            \mathbf{w}}^T C_{\mathbf{e}\mathbf{w}}
             \implies \Gamma_{\mathbf{w}} = (\det C_{\mathbf{e}\mathbf{w}})^2 > 0
         \]
         так как матрица перехода $C_{\mathbf{e}\mathbf{w}}$ обратима.
@@ -280,7 +285,8 @@ $\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi d\sin^2 x =
         Рассмотрим набор $\mathbf{v} = (v, w)$. По теореме об определителе Грама:
         \[
             \Gamma_{\mathbf{v}} = \det G_{\mathbf{v}}
-            = \det \begin{pmatrix} \langle v,v\rangle & \langle v,w\rangle \\ \langle w,v\rangle & \langle w,w\rangle \end{pmatrix}
+            = \det \begin{pmatrix} \langle v,v\rangle & \langle v,w\rangle \\ \langle w,v\rangle & \langle w,
+            w\rangle \end{pmatrix}
             = \langle v,v\rangle\langle w,w\rangle - \langle v,w\rangle^2 \ge 0
         \]
         Следовательно, $\langle v,w\rangle^2 \le \|v\|^2 \cdot \|w\|^2$, откуда $|\langle v,w\rangle| \le \|v\|\cdot\|w\|$.

@@ -10,7 +10,7 @@
     \]
 
     \[
-    \operatorname{Ann} U = \{\varphi \in V^* \mid \varphi(u) = 0 \ \forall u \in U\}. 
+    \operatorname{Ann} U = \{\varphi \in V^* \mid \varphi(u) = 0 \ \forall u \in U\}.
     \]
 
     Тогда
@@ -26,7 +26,7 @@
     \item $\dim U^\perp = \dim \operatorname{Ann} U = \dim V - \dim U$.
     \item $(U^\perp)^\perp = U$.
     \item $U \cap U^\perp = \{0\}$
-    \item  
+    \item
     \begin{enumerate}
         \item $(U + W)^\perp = U^\perp + W^\perp$
         \item $(U \cap W)^\perp = U^\perp \cap W^\perp$
@@ -34,7 +34,7 @@
     \begin{proof}
     \begin{proofsteps}
         \item
-        $\dim U^\perp$ -- это размерность прообраза при изоморфизм аннулятора, а изморфизм не меняет размерность. 
+        $\dim U^\perp$ -- это размерность прообраза при изоморфизм аннулятора, а изморфизм не меняет размерность.
         \item
         Подсчитаем размерность:
 		\[
@@ -43,13 +43,15 @@
 			= \dim V - (\dim V - \dim U)
 			= \dim U.
 		\]
-		Покажем включение $U \subset (U^\perp)^\perp$. Пусть $u \in U$ и $w \in U^\perp$. Тогда $\langle u, w\rangle = 0$, то есть $u \perp w$. Поскольку это верно для всех $w \in U^\perp$, получаем $u \in (U^\perp)^\perp$.
- 
+		Покажем включение $U \subset (U^\perp)^\perp$. Пусть $u \in U$ и $w \in U^\perp$. Тогда $\langle u, w\rangle = 0$,
+  то есть $u \perp w$. Поскольку это верно для всех $w \in U^\perp$, получаем $u \in (U^\perp)^\perp$.
+
 		Таким образом, $U \subset (U^\perp)^\perp$ и $\dim U = \dim(U^\perp)^\perp$, откуда $U = (U^\perp)^\perp$.
         \item
-        Пусть $u \in U \cap U^\perp$. Тогда $u \perp U$, в частности $u \perp u$, то есть $\langle u, u\rangle = 0$, откуда $u = 0$.
+        Пусть $u \in U \cap U^\perp$. Тогда $u \perp U$, в частности $u \perp u$, то есть $\langle u, u\rangle = 0$,
+        откуда $u = 0$.
         \item Упражнение
-        
+
     \end{proofsteps}
     \end{proof}
 
@@ -59,12 +61,14 @@
 \begin{cor}
 	$V = U \oplus U^\perp = U + U^\perp $
 	\begin{proof}
-		По утверждению выше $U \cap U^\perp = \{0\}$, поэтому сумма прямая. По следствию из размерностей $\dim U + \dim U^\perp = \dim V$, откуда $U + U^\perp = V$.
+		По утверждению выше $U \cap U^\perp = \{0\}$, поэтому сумма прямая. По следствию из размерностей $\dim U + \dim U^\perp = \dim V$,
+  откуда $U + U^\perp = V$.
 	\end{proof}
 \end{cor}
 
 \begin{definition}
-	Отображение $\pi_U : V \to U$ называется \emph{ортогональной проекцией} на $U$. Из разложения $V = U \oplus U^\perp$ следует, что $\forall v \in V$ единственным образом представляется как
+	Отображение $\pi_U : V \to U$ называется \emph{ортогональной проекцией} на $U$. Из разложения $V = U \oplus U^\perp$ следует,
+ что $\forall v \in V$ единственным образом представляется как
 	\[
 		v = \pi_U v + (v - \pi_U v),
 	\]

@@ -2,7 +2,8 @@
 
 \begin{definition}
     Пусть $V$ --- евклидово пространство размерности $n$.
-    \emph{Объём} --- это отображение $\omega: \underbrace{V \times V \times \cdots \times V}_{n} \to \mathbb{R}$, такое что:
+    \emph{Объём} --- это отображение $\omega: \underbrace{V \times V \times \cdots \times V}_{n} \to \mathbb{R}$,
+    такое что:
     \begin{enumerate}
         \item \textbf{Кососимметричность:}
         \[
@@ -56,18 +57,20 @@
         \[
             \omega(\dots, v_i, \dots, v_j, \dots) = -\omega(\dots, v_j, \dots, v_i, \dots),
         \]
-        \item $\omega(v_1, \dots, v_n) = 0$, если $v_1, \dots, v_n$ линейно зависимы (\textcircled{$\Rightarrow$} выполняется тольео если $\omega \ \not\equiv \ 0$).
+        \item $\omega(v_1, \dots, v_n) = 0$, если $v_1, \dots, v_n$ линейно зависимы (\textcircled{$\Rightarrow$}
+        выполняется тольео если $\omega \ \not\equiv \ 0$).
     \end{enumerate}
 
     \begin{proof}
-        \textbf{\emph{3}} в \textcircled{$\Leftarrow$}: Пусть $v_1, \dots, v_n$ линейно зависимы. НУО $v_1 = \sum_{i=2}^{n} \alpha_i v_i$. Тогда:
-    
-        \[  
+        \textbf{\emph{3}} в \textcircled{$\Leftarrow$}: Пусть $v_1, \dots, v_n$ линейно зависимы. НУО
+        $v_1 = \sum_{i=2}^{n} \alpha_i v_i$. Тогда:
+
+        \[
             \omega(v_1, \dots, v_n)
             = \omega\!\left(\sum_{i=2}^{n} \alpha_i v_i,\, v_2, \dots, v_n\right)
             = \omega(0, v_2, \dots, v_n)
             = \omega(0 \cdot 0, v_2, \dots, v_n)
-            = 0 \cdot \omega(0, v_2, \dots, v_n) = 0        
+            = 0 \cdot \omega(0, v_2, \dots, v_n) = 0
         \]
         \\
 
@@ -85,7 +88,8 @@
             &= \omega\!\left(v + \lambda v + \sum_{i=2}^{n}\alpha_i v_i,\, v_2, \dots, v_n\right) \\
             &= \omega\!\left((1+\lambda)v,\, v_2, \dots, v_n\right) \\
             &= (1+\lambda)\,\omega(v, v_2, \dots, v_n) \\
-            &= \omega(v, v_2, \dots, v_n) + \omega\!\left(\lambda v + \sum_{i=2}^{n}\alpha_i v_i,\, v_2, \dots, v_n\right) \\
+            &= \omega(v, v_2, \dots, v_n) + \omega\!\left(\lambda v + \sum_{i=2}^{n}\alpha_i v_i,\, v_2,
+            \dots, v_n\right) \\
             &= \omega(v, v_2, \dots, v_n) + \omega(u, v_2, \dots, v_n) \\
         \end{align*}
 
@@ -104,7 +108,7 @@
             \omega(\dots, u, \dots, v, \dots) + \omega(\dots, v, \dots, u, \dots) = 0
         \]
         \[
-            \implies \omega(\dots, u, \dots, v, \dots) = -\omega(\dots, v, \dots, u, \dots) 
+            \implies \omega(\dots, u, \dots, v, \dots) = -\omega(\dots, v, \dots, u, \dots)
         \]
 
         Таким образом $\omega \in (\bigwedge^n V)^*$. \\
@@ -148,7 +152,7 @@
     \begin{proof}
         $L \colon V \to V$, $e_i \mapsto v_i$.
         \[
-            \omega(Le_1 \wedge \dots \wedge Le_n) 
+            \omega(Le_1 \wedge \dots \wedge Le_n)
             = \omega((\bigwedge^n L)(e_1 \wedge \dots \wedge e_n))
             = \underbrace{\det L}_{\det C_{ev}} \omega(e_1 \wedge \dots \wedge e_n).
         \]

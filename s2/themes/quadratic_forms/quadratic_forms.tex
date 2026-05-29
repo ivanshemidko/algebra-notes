@@ -31,7 +31,8 @@
     \[
         V \cong H \oplus U,
     \]
-    где $B\big|_H$ --- гиперболическая форма, а $U$ --- анизотропное подпространство (то есть все ненулевые векторы в $U$ анизотропны).
+    где $B\big|_H$ --- гиперболическая форма, а $U$ --- анизотропное подпространство (то есть все ненулевые векторы в
+    $U$ анизотропны).
 
     \begin{proof}
         Если все ненулевые векторы $V$ анизотропны, то $H = 0$ и $U = V$.
@@ -40,7 +41,8 @@
         Положим $\bar{v}' \coloneqq \bar{v} / B(v, \bar{v})$, тогда $B(v, \bar{v}') = 1$.
 
         Покажем, что можно выбрать $\bar{v}'$ изотропным. Если $B(\bar{v}', \bar{v}') \neq 0$,
-        заменим $\bar{v}'$ на $\bar{v}' - \frac{B(\bar{v}', \bar{v}')}{2} v$. Тогда $B(v, \bar{v}') = 1$ сохраняется, а $B(\bar{v}', \bar{v}') = 0$.
+        заменим $\bar{v}'$ на $\bar{v}' - \frac{B(\bar{v}', \bar{v}')}{2} v$. Тогда $B(v, \bar{v}') = 1$ сохраняется,
+        а $B(\bar{v}', \bar{v}') = 0$.
 
         Векторы $v, \bar{v}'$ линейно независимы (иначе $B(v, \bar{v}') = 0$).
         Матрица Грама $B\big|_{\langle v, \bar{v}' \rangle}$ в базисе $v, \bar{v}'$:
@@ -75,7 +77,8 @@
 
 
 \begin{lemma}
-    Пусть $v, u \in V$ --- анизотропные, $B(v, v) = B(u, u)$, $B$ невырожденна. Тогда $\exists\, e\colon u = \sigma_e(v)$ или $-u = \sigma_e(v)$.
+    Пусть $v, u \in V$ --- анизотропные, $B(v, v) = B(u, u)$, $B$ невырожденна. Тогда $\exists\, e\colon u = \sigma_e(v)$ или
+    $-u = \sigma_e(v)$.
 
     \begin{proof}
         Покажем, что хотя бы один из $v + u$, $v - u$ анизотропен.
@@ -85,7 +88,8 @@
             B(v + u,\, v - u) = B(v, v) - B(v, u) + B(u, v) - B(u, u) = B(v,v) - B(u,u) = 0.
         \]
         Если бы оба были изотропны: $B(v+u, v+u) = 0$ и $B(v-u, v-u) = 0$.
-        Тогда $v+u$ и $v-u$ --- базис $\langle v, u \rangle$, и матрица Грама в этом базисе нулевая. Но тогда $B(v, v) = 0$ --- противоречие с анизотропностью $v$.
+        Тогда $v+u$ и $v-u$ --- базис $\langle v, u \rangle$, и матрица Грама в этом базисе нулевая. Но тогда
+        $B(v, v) = 0$ --- противоречие с анизотропностью $v$.
 
         Если $v + u$ анизотропен, то $\sigma_{v+u}(v) = -u$:
         \[
@@ -110,9 +114,11 @@
     $V = \mathbb{R}^2$, $B = \langle \cdot, \cdot \rangle$ --- стандартное скалярное произведение.
     Пусть $e, e' \in V$ --- анизотропные. Тогда:
     \[
-        \sigma_e(\sigma_{e'}(v)) = \sigma_e\!\left(v - \frac{2\langle v, e' \rangle}{\langle e', e' \rangle}\, e'\right) = 
+        \sigma_e(\sigma_{e'}(v)) = \sigma_e\!\left(v - \frac{2\langle v, e' \rangle}{\langle e', e' \rangle}
+        \, e'\right) =
         v - \frac{2\langle v, e' \rangle}{\langle e', e' \rangle}\, e' -
-        \frac{2\left\langle v - \frac{2\langle v, e' \rangle}{\langle e', e' \rangle}\, e',\, e\right\rangle}{\langle e, e \rangle}\, e.
+        \frac{2\left\langle v - \frac{2\langle v, e' \rangle}{\langle e', e' \rangle}\, e',\, e\right\rangle}
+        {\langle e, e \rangle}\, e.
     \]
     Композиция двух отражений --- это поворот на удвоенный угол между $e$ и $e'$.
 \end{example}
@@ -124,7 +130,8 @@
 
 \begin{definition}
     Функция $Q\colon V \to k$ называется \emph{квадратичной формой},
-    если существует базис $e_1, \dots, e_n$ пространства $V$ и однородный многочлен $q(x_1, \dots, x_n)$ степени $2$, такой что
+    если существует базис $e_1, \dots, e_n$ пространства $V$ и однородный многочлен $q(x_1, \dots, x_n)$ степени
+    $2$, такой что
     \[
         Q(\alpha_1 e_1 + \dots + \alpha_n e_n) = q(\alpha_1, \dots, \alpha_n).
     \]
@@ -153,7 +160,8 @@
     Матрица $G = (b_{ij})$ называется \emph{матрицей Грама} квадратичной формы. Тогда
     \[
         Q(v) = Q(\alpha_1 e_1, \dots, \alpha_n e_n) = q(\alpha_1, \dots, \alpha_n) = v^T G\, v, \\
-        \qquad q(\alpha_1, \dots, \alpha_n) = \sum_{i,j} a_{ij}\, \alpha_i \alpha_j = \sum_{i,j} b_{ij}\, \alpha_i \alpha_j.
+        \qquad q(\alpha_1, \dots, \alpha_n) = \sum_{i,j} a_{ij}\, \alpha_i \alpha_j = \sum_{i,j} b_{ij}
+        \, \alpha_i \alpha_j.
     \]
 \end{definition}
 
@@ -181,18 +189,21 @@
     \begin{proof}
         Проверка: $Q(v) = B(v, v)$ и
         \[
-            \frac{Q(v+u) - Q(v) - Q(u)}{2} = \frac{B(v+u,\, v+u) - B(v,v) - B(u,u)}{2} = \frac{2B(v,u)}{2} = B(v,u).
+            \frac{Q(v+u) - Q(v) - Q(u)}{2} = \frac{B(v+u,\, v+u) - B(v,v) - B(u,u)}{2} = \frac{2B(v,u)
+            }{2} = B(v,u).
         \]
         Обратная композиция:
         \[
-            \frac{Q(v + u) - Q(v) - Q(u)}{2}\bigg|_{u = v} = \frac{Q(2v) - 2Q(v)}{2} = \frac{4Q(v) - 2Q(v)}{2} = Q(v).
+            \frac{Q(v + u) - Q(v) - Q(u)}{2}\bigg|_{u = v} = \frac{Q(2v) - 2Q(v)}{2} = \frac{4Q(v) - 2Q(v)
+            }{2} = Q(v).
         \]
     \end{proof}
 \end{stmt}
 
 
 \begin{definition}
-    Квадратичная форма $Q$ называется \emph{невырожденной}, если соответствующая симметричная билинейная форма $B$ невырожденна.
+    Квадратичная форма $Q$ называется \emph{невырожденной}, если соответствующая симметричная билинейная форма
+    $B$ невырожденна.
 \end{definition}
 
 
@@ -212,7 +223,7 @@
     После замены форма принимает вид
     \[
         Q = \pm\!\left(\sqrt{|\beta_1|}\, x_1\right)^2 \pm \dots \pm \left(\sqrt{|\beta_n|}\, x_n\right)^2
-          = \underbrace{y_1^2 + \dots + y_p^2}_{p \text{ положительных}} 
+          = \underbrace{y_1^2 + \dots + y_p^2}_{p \text{ положительных}}
             - \underbrace{y_{p+1}^2 - \dots - y_{p+q}^2}_{q \text{ отрицательных}}.
     \]
     Пара $(p, q)$ называется \emph{сигнатурой} квадратичной формы.

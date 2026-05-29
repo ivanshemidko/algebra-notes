@@ -12,12 +12,12 @@
 \end{definition}
 
 \begin{definition}
-    Действие называется \emph{свободным}, если $\forall\, g \in G,\, g \neq e\colon \varphi_g(x) \neq x\ \forall\, x \in X$ 
+    Действие называется \emph{свободным}, если $\forall\, g \in G,\, g \neq e\colon \varphi_g(x) \neq x\ \forall\, x \in X$
     (Любой элемент группы $G$  без неподвижных точек).
 \end{definition}
 
 
-\begin{remark} 
+\begin{remark}
     Вместо $\varphi_g(x)$ обычно пишут $gx$.
 \end{remark}
 
@@ -45,10 +45,10 @@
 \begin{stmt}
     Отношение $\sim$ является отношением эквивалентности.
     \begin{proof}
-        
+
         \textbf{\\Рефлексивность.} $x \sim x$, так как $x \in \mathrm{Orb}\, x$.
 
-        \textbf{Симметричность.} Если $x \sim y$, то $\exists z \in X: x, y \in \mathrm{Orb}\ z \Rightarrow 
+        \textbf{Симметричность.} Если $x \sim y$, то $\exists z \in X: x, y \in \mathrm{Orb}\ z \Rightarrow
         y, x \in \mathrm{Orb}\ z \Rightarrow y \sim x$.
 
         \textbf{Транзитивность.} Пусть $x \sim y$ и $y \sim z$. Тогда:
@@ -101,7 +101,8 @@
 
 \begin{remark}
     Для конечной группы достаточно проверить лишь замкнутость: если $H \subseteq G$ конечно и замкнуто,
-    то обратные элементы существуют автоматически. Действительно, для любого $g \in H$ последовательность $g, g^2, g^3, \ldots$ принимает
+    то обратные элементы существуют автоматически. Действительно, для любого $g \in H$ последовательность
+    $g, g^2, g^3, \ldots$ принимает
     лишь конечно много значений, поэтому $g^i = g^j$ при некоторых $i < j$, откуда $g^{j-i} = e$ и $g^{-1} = g^{j-i-1} \in H$.
 \end{remark}
 
@@ -109,7 +110,7 @@
     $\mathrm{Stab}\, x$ --- подгруппа $G$.
     \begin{proof}
         \textbf{Замкнутость.} Пусть $g, \tilde{g} \in \mathrm{Stab}\, x$. Тогда $(g\tilde{g})x
-         = \varphi_{g\tilde{g}}(x) = (\varphi_g \circ \varphi_{\tilde{g}})(x) 
+         = \varphi_{g\tilde{g}}(x) = (\varphi_g \circ \varphi_{\tilde{g}})(x)
         = \varphi_g(\varphi_{\tilde{g}}(x)) = g(\tilde{g}x) = gx = x$.
 
         \textbf{Обратный.} Пусть $g \in \mathrm{Stab}\, x$, тогда $gx = x$. Подействуем $g^{-1}$:
@@ -167,7 +168,8 @@
         \]
         Покажем, что $|\{g \mid gx = y\}| = |\mathrm{Stab}\, x|$ для любого $y \in \mathrm{Orb}\, x$.
 
-        Зафиксируем $\tilde{g}\colon \tilde{g}x = y$. Построим биекцию $\mathrm{Stab}\, x \to \{g \mid gx = y\}$, $g \mapsto \tilde{g}\, g$.
+        Зафиксируем $\tilde{g}\colon \tilde{g}x = y$. Построим биекцию $\mathrm{Stab}\, x \to \{g \mid gx = y\}$,
+        $g \mapsto \tilde{g}\, g$.
         Почему попали?
 
         \[
@@ -186,7 +188,8 @@
 
         Итого:
         \[
-            |G| = \sum_{y \in \mathrm{Orb}\, x} |\mathrm{Stab}\, x| = |\mathrm{Stab}\, x| \cdot |\mathrm{Orb}\, x|. \qedhere
+            |G| = \sum_{y \in \mathrm{Orb}\, x} |\mathrm{Stab}\, x| = |\mathrm{Stab}\, x| \cdot |\mathrm{Orb}
+            \, x|. \qedhere
         \]
     \end{proof}
 \end{stmt}
@@ -229,7 +232,8 @@
         \]
         Группируем по орбитам. Для $x$ из одной орбиты $d$ размер стабилизатора одинаков, поэтому:
         \[
-            \sum_{x \in X} |\mathrm{Stab}\, x| = \sum_{d \in X/G} \sum_{x \in d} |\mathrm{Stab}\, x| = \sum_{d \in X/G} |d| \cdot |\mathrm{Stab}\, x| = \sum_{d \in X/G} |G| = |G| \cdot |X/G|.
+            \sum_{x \in X} |\mathrm{Stab}\, x| = \sum_{d \in X/G} \sum_{x \in d} |\mathrm{Stab}\, x| = \sum_{d \in X/G}
+            |d| \cdot |\mathrm{Stab}\, x| = \sum_{d \in X/G} |G| = |G| \cdot |X/G|.
         \]
         Здесь использовано, что $|d| \cdot |\mathrm{Stab}\, x| = |\mathrm{Orb}\, x| \cdot |\mathrm{Stab}\, x| = |G|$.
 
@@ -240,7 +244,8 @@
 
 
 \begin{example}
-    Имеем $n$ цветов. Сколько различных раскрасок вершин квадрата из $4$ бусин, если считаем одинаковыми те, которые переводятся друг в друга поворотом или отражением?
+    Имеем $n$ цветов. Сколько различных раскрасок вершин квадрата из $4$ бусин, если считаем одинаковыми те,
+    которые переводятся друг в друга поворотом или отражением?
 
     $D_4$ --- группа симметрий квадрата, $|D_4| = 8$:
     \[
