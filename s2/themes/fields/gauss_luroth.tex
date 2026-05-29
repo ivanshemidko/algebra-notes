@@ -1,0 +1,155 @@
+\section{Лемма Гаусса}
+
+Пусть $R$ --- область главных идеалов (например, $\mathbb{Z}$ или $F[x]$), $Q$ --- поле частных $R$ (например,
+$\mathbb{Q}$ или $F(x)$).
+
+\begin{definition}
+	Многочлен $f(t) = a_n t^n + \dots + a_1 t + a_0 \in R[t]$ называется \emph{примитивным},
+    если все коэффициенты $a_i \in R$ не имеют общего необратимого делителя.
+\end{definition}
+
+\begin{example}
+	$R = \mathbb{Z}$, $f(t) = 3t^2 + 4t + 1$ --- примитивен ($\gcd(3, 4, 1) = 1$).
+\end{example}
+
+
+\begin{definition}
+	Для $f(t) \in Q[t]$ определим \emph{содержание} $c(f) \in Q$ как элемент, для которого $f = c(f) \cdot \tilde{f}
+ $,
+    где $\tilde{f} \in R[t]$ примитивен.
+
+	Содержание $c(f)$ единственно с точностью до обратимого элемента.
+\end{definition}
+
+\begin{example}
+	$R = \mathbb{Z}$, $Q = \mathbb{Q}$. Для $f(t) = \frac{4}{7}t^2 + \frac{2}{3}t + \frac{4}{5}$ имеем
+    $f = \frac{2}{105}(30t^2 + 35t + 42)$, где $c(f) = \frac{2}{105}$.
+\end{example}
+
+
+\begin{stmt}
+	Если $f, g \in R[t]$ примитивны, то $fg$ тоже примитивен.
+
+	\begin{proof}
+		Пусть $p$ --- простой элемент $R$. Покажем, что коэффициенты $fg$ не все делятся на $p$.
+
+		Так как $f$ примитивен, $\exists\, a_i$ --- первый коэффициент, не делящийся на $p$. Аналогично
+        $\exists\, b_j$ --- первый коэффициент $g$, не делящийся на $p$.
+
+		Коэффициент при $t^{i+j}$ в произведении $fg$:
+		\[
+			\sum_{s+\ell = i+j} a_s b_\ell = a_i b_j + \sum_{\substack{s+\ell = i+j \\ (s,\ell) \neq (i,j)}} a_s b_\ell.
+
+		\]
+		В последней сумме: либо $s < i$ (тогда $a_s \mathbin{\vdots} p$), либо $\ell < j$ (тогда $b_\ell \mathbin{\vdots}
+  p$).
+        Значит вся сумма делится на $p$, а $a_i b_j$ --- нет. Итого коэффициент при $t^{i+j}$ не делится на
+        $p$.
+	\end{proof}
+\end{stmt}
+
+
+\begin{stmt}
+	Для $f, g \in R[t]$: $c(fg) = c(f) \cdot c(g)$.
+
+	\begin{proof}
+		Запишем $f = c(f)\tilde{f}$, $g = c(g)\tilde{g}$, где $\tilde{f}$ и $\tilde{g}$ примитивны.
+        Тогда $fg = c(f)\,c(g)\,\tilde{f}\tilde{g}$, и $\tilde{f}\tilde{g}$ примитивен по предыдущему утверждению.
+
+        Значит $c(fg) = c(f)\,c(g)$.
+	\end{proof}
+\end{stmt}
+
+
+\begin{stmt}
+	Пусть $f \in R[t]$. Если $f$ раскладывается на необратимые множители в $Q[t]$, то он раскладывается на необратимые множители в
+ $R[t]$.
+
+	\begin{proof}
+		Пусть $f = g \cdot h$ в $Q[t]$, где $g, h \in Q[t]$. Запишем $f = c(f)\tilde{f}$, $g = c(g)\tilde{g}
+  $, $h = c(h)\tilde{h}$.
+
+		Тогда $c(f)\tilde{f} = c(g)\,c(h)\,\tilde{g}\tilde{h}$. Так как $\tilde{f}$ и $\tilde{g}\tilde{h}$ --- примитивные,
+
+        имеем $c(f) = c(g)\,c(h)$ (с точностью до обратимого). Следовательно, $\tilde{f} = \tilde{g}\tilde{h}
+        $, и это разложение в $R[t]$.
+
+		Тогда $f = (c(g)\,\tilde{g}) \cdot \tilde{h}$, где $c(g)\,\tilde{g}, \tilde{h} \in R[t]$. Это нужное разложение.
+
+	\end{proof}
+\end{stmt}
+
+
+\begin{lemma}[Гаусса]
+	Пусть $f, g \in R[t]$. Если $f \mid g$ в $Q[t]$ и $f$ примитивен, то $f \mid g$ в $R[t]$.
+
+	\begin{proof}
+		$f \mid g$ в $Q[t]$ означает $g(t) = h(t) \cdot f(t)$, где $h \in Q[t]$. Тогда $c(g) = c(h) \cdot c(f)
+  $.
+        Так как $f$ примитивен, $c(f) \in R^*$, поэтому $c(h) \in R$. Значит $h = c(h)\tilde{h}$, где
+        $\tilde{h} \in R[t]$,
+        и $g = c(h)\tilde{h} \cdot f \in R[t]$.
+	\end{proof}
+\end{lemma}
+
+
+\begin{cor}
+	Пусть $f(t) \in \mathbb{Z}[t]$ --- унитарный. Тогда любой рациональный корень $f$ принадлежит $\mathbb{Z}
+ $.
+
+	\begin{proof}
+		Пусть $q = \frac{a}{b} \in \mathbb{Q}$ --- корень $f(t)$, $(a, b) = 1$. Тогда $f(t) = (t - q) \cdot g(t)
+  $ в $\mathbb{Q}[t]$.
+
+		Домножим: $f(t) = \left(\frac{1}{b}\right) g(t) \cdot (bt - a)$. Многочлен $bt - a$ примитивен и делит
+  $f(t)$ в $\mathbb{Q}[t]$.
+        По лемме Гаусса $\frac{1}{b}g(t) \in \mathbb{Z}[t]$.
+
+		Сравним старшие коэффициенты: $1 = \frac{1}{b} \cdot b \cdot \text{(ст. коэфф. } g)$,
+        откуда $b = \pm 1$, и $q = \frac{a}{b} \in \mathbb{Z}$.
+	\end{proof}
+\end{cor}
+
+
+\section{Лемма Люрота}
+
+\begin{definition}
+	Для $f \in F(x)$, $f = \frac{p(x)}{q(x)}$, $(p, q) = 1$, \emph{степенью} $f$ называется $\deg f \coloneqq \max(\deg p,
+ \deg q)$.
+\end{definition}
+
+\begin{lemma}[Люрота]
+	Пусть $u \in F(x) \setminus F$. Тогда:
+	\begin{enumerate}
+		\item $u$ трансцендентен над $F$,
+		\item $x$ алгебраичен над $F(u)$,
+		\item $[F(x) : F(u)] = \deg u$.
+	\end{enumerate}
+
+	\begin{proof}
+		Пусть $u = \frac{p(x)}{q(x)}$, $(p, q) = 1$. Рассмотрим равенство $p(x) - u \cdot q(x) = 0$ в $F(x)
+  $.
+
+		Элемент $z(t) = p(t) - u \cdot q(t) \in F(u)[t]$. Его корень --- $x$.
+        По лемме Гаусса (с $R = F[u]$, $Q = F(u)$) многочлен $z$ неприводим в $F(u)[t]$.
+
+		Значит $z(t)$ --- минимальный многочлен $x$ над $F(u)$, и
+		\[
+			[F(x) : F(u)] = [L[x] : L] = \deg z = \max(\deg p, \deg q) = \deg u,
+		\]
+		где $L = F(u)$.
+	\end{proof}
+\end{lemma}
+
+
+\begin{cor}
+	$F(x) = F(u)$ тогда и только тогда, когда $u = \frac{ax + b}{cx + d}$, где $\begin{vmatrix} a & b \\ c & d \end{vmatrix}
+ \neq 0$.
+
+	\begin{proof}
+		$F(x) = F(u)$ $\Leftrightarrow$ $[F(x) : F(u)] = 1$ $\Leftrightarrow$ $\deg u = 1$
+        $\Leftrightarrow$ $u = \frac{ax + b}{cx + d}$ с $\deg p \leq 1$, $\deg q \leq 1$ и $(p, q) = 1
+        $,
+        что эквивалентно $\begin{vmatrix} a & b \\ c & d \end{vmatrix} \neq 0$.
+	\end{proof}
+\end{cor}
