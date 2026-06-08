@@ -254,12 +254,12 @@ $\int_0^\pi \cos x \sin x \, dx = \frac{1}{2} \int_0^\pi d\sin^2 x =
         \item $\Gamma_{\mathbf{w}} = 0 \iff \mathbf{w}$ линейно зависим
     \end{enumerate}
     \begin{proof}
-        Пусть $\exists$ ненулевой столбец $\mathbf{x} = (x_1, \dots, x_m)^T \in \mathbb{R}^m$ такой, что
+        Пусть $\exists$ ненулевой столбец $x = (x_1, \dots, x_m)^T \in \mathbb{R}^m$ такой, что
         \[
-            \mathbf{w}\mathbf{x} = x_1 w_1 + \dots + x_m w_m = 0
+            \mathbf{w}x = x_1 w_1 + \dots + x_m w_m = 0
         \]
-        Умножая справа на $\mathbf{w}^T$, получаем $G_{\mathbf{w}}\mathbf{x} = 0$.
-        Это означает, что строки (столбцы) матрицы $G_{\mathbf{w}}$ линейно зависимы, поэтому
+        Умножая слева на $\mathbf{w}^T$, получаем $G_{\mathbf{w}}x = 0$.
+        Это означает, что строки (столбцы) матрицы $G_{\mathbf{w}}$ линейно зависимы, то есть матрица $G_{\mathbf{w}}$ вырождена, поэтому
         \[
             \Gamma_{\mathbf{w}} = \det G_{\mathbf{w}} = 0
         \]
