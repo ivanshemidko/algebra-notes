@@ -3,19 +3,20 @@
 \begin{definition}
     Пусть $F \subset E$ --- расширение полей. \emph{$F$-автоморфизм} поля $E$ --- это автоморфизм $\varphi\colon E \to E$,
     тождественный на $F$: $\varphi(a) = a$ для всех $a \in F$.
+    Множество всех $F$-автоморфизмов $E$ обозначается $\mathrm{Aut}(E/F)$ и является группой относительно композиции.
 
-    Множество всех $F$-автоморфизмов $E$ обозначается $\mathrm{Aut}(E/F)$ и является группой относительно композиции --- \emph{группой Галуа}.
+    Конечное расширение $E/F$ называется \emph{расширением Галуа}, если оно нормально и сепарабельно.
+    В этом случае группа $\mathrm{Aut}(E/F)$ называется \emph{группой Галуа} расширения $E/F$ и обозначается $\mathrm{Gal}(E/F)$.
 \end{definition}
 
 
 \begin{examplelist}
     \item $\mathrm{Aut}(\mathbb{C}/\mathbb{R})$ состоит из двух элементов: $\mathrm{id}$ и комплексное сопряжение
     $\overline{\phantom{z}}$.
-    \item $\mathrm{Aut}(\mathbb{C}/\mathbb{R})$ состоит из двух элементов: $\mathrm{id}$ и комплексное сопряжение
-    $\overline{\phantom{z}}$.
 
     \item $E = \mathbb{C}(x)$ над $\mathbb{C}$. Любой $\mathbb{C}$-автоморфизм $\varphi$ определяется значением
-    $\varphi(x) = u \in E$. По следствию из леммы Люрота $u = \frac{ax + b}{cx + d}$, $\begin{vmatrix} a & b \\ c & d \end{vmatrix} \neq 0$.
+    $\varphi(x) = u \in E$, причём $\mathbb{C}(u) \subset \mathbb{C}(x)$.
+    Чтобы $\varphi$ было биекцией, нужно $\mathbb{C}(u) = \mathbb{C}(x)$; по следствию из леммы Люрота это равносильно тому, что $u = \frac{ax + b}{cx + d}$, $\begin{vmatrix} a & b \\ c & d \end{vmatrix} \neq 0$.
     Эта группа называется $\mathrm{PGL}_2(\mathbb{C})$ (проективная линейная группа).
 
     \item $E = \mathbb{C}(x_1, \dots, x_n)$ над $\mathbb{C}$ --- бесконечная группа автоморфизмов.
